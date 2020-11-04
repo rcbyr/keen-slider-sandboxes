@@ -1,0 +1,22 @@
+<div
+  #sliderRef
+  [ngStyle]="{
+    'background-image':
+      'linear-gradient(' +
+      rotation +
+      'deg, black 0px, black 50%, white 50%, white 100%)'
+  }"
+  class="background-rotation"
+>
+  <div
+    class="background-rotation__inner"
+    [ngStyle]="{
+      'background-image':
+        'linear-gradient(' +
+        rotation +
+        'deg, white 0px, white 50%, black 50%, black 100%)'
+    }"
+  >
+    <span>keen-slider</span>
+  </div>
+</div>

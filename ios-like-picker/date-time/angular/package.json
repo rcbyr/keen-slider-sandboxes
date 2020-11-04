@@ -1,0 +1,35 @@
+{
+  "name": "sandbox",
+  "description": "keen-slider sandbox",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "ng serve"
+  },
+  "dependencies": {
+    "@angular/animations": "^10.0.0",
+    "@angular/common": "^10.0.0",
+    "@angular/compiler": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "@angular/forms": "^10.0.0",
+    "@angular/platform-browser": "^10.0.0",
+    "@angular/platform-browser-dynamic": "^10.0.0",
+    "@angular/router": "^10.0.0",
+    "core-js": "3.6.4",
+    "date-fns": "^2.12.0",
+    "keen-slider": "5.2.4",
+    "rxjs": "6.5.4",
+    "zone.js": "0.10.2",
+    "tslib": "1.13.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.6.6",
+    "@angular/compiler-cli": "^5.2.0",
+    "@angular/language-service": "^5.2.0",
+    "@types/core-js": "0.9.46",
+    "@types/node": "~6.14.13",
+    "ts-node": "~4.1.0",
+    "typescript": "3.9.7"
+  }
+}

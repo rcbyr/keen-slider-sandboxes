@@ -1,0 +1,25 @@
+.zoom-out {
+  perspective: 1000px;
+  height: 50vw;
+}
+
+@media (min-width: 768px) {
+  .zoom-out {
+    height: 300px;
+  }
+}
+
+.zoom-out__slide {
+  position: absolute;
+}
+
+.zoom-out__slide img {
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}

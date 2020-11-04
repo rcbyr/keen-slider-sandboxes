@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keen-Slider</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/keen-slider@5.2.4/keen-slider.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div id="my-keen-slider" class="keen-slider zoom-out">
+      <div class="keen-slider__slide zoom-out__slide">
+        <img
+          src="https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80"
+        />
+      </div>
+      <div class="keen-slider__slide zoom-out__slide">
+        <img
+          src="https://images.unsplash.com/photo-1590004845575-cc18b13d1d0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80"
+        />
+      </div>
+      <div class="keen-slider__slide zoom-out__slide">
+        <img
+          src="https://images.unsplash.com/photo-1590004987778-bece5c9adab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80"
+        />
+      </div>
+      <div class="keen-slider__slide zoom-out__slide">
+        <img
+          src="https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80"
+        />
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@5.0.2/keen-slider.min.js"></script>
+    <script>
+      var elements = document.querySelectorAll(".zoom-out__slide")
+      var slider = new KeenSlider("#my-keen-slider", {
+        loop: true,
+        slides: elements.length,
+        move: (s) => {
+          elements.forEach((element, idx) => {
+            moveElement(element, idx, s.details())
+          })
+        },
+        initial: 2,
+      })
+
+      function moveElement(element, idx, details) {
+        var position = details.positions[idx]
+        var x = details.widthOrHeight * position.distance
+        var scale_size = 0.7
+        var scale = 1 - (scale_size - scale_size * position.portion)
+        var style = `translate3d(${x}px, 0px, 0px) scale(${scale})`
+        element.style.transform = style
+        element.style["-webkit-transform"] = style
+      }
+    </script>
+  </body>
+</html>

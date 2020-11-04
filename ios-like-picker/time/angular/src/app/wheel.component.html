@@ -1,0 +1,40 @@
+<div
+  #sliderRef
+  [ngClass]="'wheel keen-slider wheel--perspective-' + perspective"
+>
+  <div
+    class="wheel__shadow-top"
+    [ngStyle]="{
+      transform: 'translateZ(' + radius + 'px)',
+      '-webkit-transform': 'translateZ(' + radius + 'px)'
+    }"
+  ></div>
+  <div class="wheel__inner">
+    <div class="wheel__slides" [ngStyle]="{ width: width + 'px' }">
+      <div
+        *ngFor="let slide of slideValues"
+        class="wheel__slide"
+        [ngStyle]="slide.style"
+      >
+        <span>{{ slide.value }}</span>
+      </div>
+    </div>
+    <div
+      *ngIf="label"
+      class="wheel__label"
+      [ngStyle]="{
+        transform: 'translateZ(' + radius + 'px)',
+        '-webkit-transform': 'translateZ(' + radius + 'px)'
+      }"
+    >
+      {{ label }}
+    </div>
+  </div>
+  <div
+    class="wheel__shadow-bottom"
+    [ngStyle]="{
+      transform: 'translateZ(' + radius + 'px)',
+      '-webkit-transform': 'translateZ(' + radius + 'px)'
+    }"
+  ></div>
+</div>

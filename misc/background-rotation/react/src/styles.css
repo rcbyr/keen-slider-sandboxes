@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.background-rotation {
+  height: 200px;
+  position: relative;
+  justify-content: center;
+  color: #fff;
+  background-size: 100% 200%;
+}
+
+.background-rotation * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.background-rotation__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 200%;
+  color: rgb(98, 105, 105);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  display: block;
+  text-align: center;
+  line-height: 200px;
+}
+
+.background-rotation__inner span {
+  font-size: 30px;
+  font-weight: bold;
+}

@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lazy__slide {
+  height: 50vw;
+  background: rgb(255, 75, 64);
+  background-color: linear-gradient(
+    0deg,
+    rgba(255, 75, 64, 1) 0%,
+    rgba(255, 154, 63, 1) 100%
+  );
+  background-image: url("https://keen-slider.io/images/loader.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100px;
+  min-height: auto;
+}
+
+@media (min-width: 768px) {
+  .lazy__slide {
+    height: 300px;
+  }
+}
+
+.lazy__slide img {
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+}
