@@ -95,7 +95,7 @@ class App extends LitElement {
       </style>
       <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/keen-slider@v5.2.4/keen-slider.min.css"
+        href="https://cdn.jsdelivr.net/npm/keen-slider@v5.3.1/keen-slider.min.css"
       />
       <div id="slider" class="keen-slider">
         <div class="keen-slider__slide number-slide1">1</div>

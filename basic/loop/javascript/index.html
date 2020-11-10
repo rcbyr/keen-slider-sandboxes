@@ -3,10 +3,7 @@
   <head>
     <title>Keen-Slider</title>
     <meta charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/keen-slider@5.2.4/keen-slider.min.css"
-    />
+    <link rel="stylesheet" href="./node_modules/keen-slider/keen-slider.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
 
@@ -19,9 +16,9 @@
       <div class="keen-slider__slide number-slide5">5</div>
       <div class="keen-slider__slide number-slide6">6</div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/keen-slider@5.2.4/keen-slider.min.js"></script>
+    <script src="./node_modules/keen-slider/keen-slider.js"></script>
     <script>
-      var slider = new KeenSlider("#my-keen-slider", { loop: true })
+      var slider = new KeenSlider("#my-keen-slider", { loop: false })
     </script>
   </body>
 </html>
