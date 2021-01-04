@@ -5,6 +5,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.keen-slider {
+  height: 300px;
+}
+
 [class^="number-slide"],
 [class*=" number-slide"] {
   background: grey;

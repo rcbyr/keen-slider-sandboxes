@@ -31,6 +31,10 @@ export default {
 </script>
 
 <style>
+.keen-slider {
+  height: 300px;
+}
+
 [class^="number-slide"],
 [class*=" number-slide"] {
   background: grey;
