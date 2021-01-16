@@ -10,7 +10,7 @@
   "dependencies": {
     "@vue/cli-plugin-babel": "4.1.1",
     "date-fns": "^2.12.0",
-    "keen-slider": "5.3.4",
+    "keen-slider": "5.4.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

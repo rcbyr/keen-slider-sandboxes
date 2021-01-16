@@ -9,7 +9,7 @@
     "start": "serve"
   },
   "devDependencies": {
-    "keen-slider": "^5.3.4",
+    "keen-slider": "^5.4.0",
     "serve": "^11.2.0"
   }
 }

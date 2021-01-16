@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import "keen-slider/keen-slider.min.css"
+import "../node_modules/keen-slider/keen-slider.min.css"
 import KeenSlider from "keen-slider"
 
 export default {
