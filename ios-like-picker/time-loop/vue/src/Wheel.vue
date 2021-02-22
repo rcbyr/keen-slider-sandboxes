@@ -100,7 +100,7 @@ export default {
     const options = {
       centered: this.loop,
       vertical: true,
-      friction: 0.0025,
+
       initial: this.initIdx || 0,
       loop: this.loop,
       dragSpeed: (val, instance) => {

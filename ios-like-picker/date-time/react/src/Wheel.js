@@ -13,7 +13,7 @@ export default function Wheel(props) {
   const [sliderRef, slider] = useKeenSlider({
     centered: props.loop,
     vertical: true,
-    friction: 0.0025,
+
     initial: props.initIdx || 0,
     loop: props.loop,
     dragSpeed: (val, instance) => {

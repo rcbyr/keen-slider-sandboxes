@@ -54,7 +54,7 @@ function Wheel(wrapper, options) {
     var sliderOptions = {
       centered: options.loop,
       vertical: true,
-      friction: 0.0025,
+
       initial: options.initIdx || 0,
       loop: options.loop,
       dragSpeed: (val, instance) => {
