@@ -1,7 +1,7 @@
 {
-  "name": "react",
-  "version": "1.0.0",
-  "description": "React example starter project",
+  "name": "keen-slider-sandbox",
+  "description": "keen-slider sandbox",
+  "version": "0.0.0",
   "keywords": [
     "react",
     "starter"

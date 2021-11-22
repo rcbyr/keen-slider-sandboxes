@@ -1,7 +1,7 @@
 {
-  "name": "react-typescript",
-  "version": "1.0.0",
-  "description": "React and TypeScript example starter project",
+  "name": "keen-slider-sandbox",
+  "description": "keen-slider sandbox",
+  "version": "0.0.0",
   "keywords": [
     "typescript",
     "react",

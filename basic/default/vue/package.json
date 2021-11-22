@@ -1,15 +1,16 @@
 {
-  "name": "sandbox",
+  "name": "keen-slider-sandbox",
   "description": "keen-slider sandbox",
   "version": "0.0.0",
-  "license": "MIT",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@vue/cli-plugin-babel": "4.1.1",
-    "keen-slider": "5.5.0",
+    "keen-slider": "file:./../../../../keen-slider",
     "vue": "^2.6.11"
   },
   "devDependencies": {
@@ -19,11 +20,6 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.0.1",
     "vue-template-compiler": "^2.6.11"
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
   },
   "eslintConfig": {
     "root": true,
@@ -37,6 +33,11 @@
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
     }
   },
   "browserslist": [
