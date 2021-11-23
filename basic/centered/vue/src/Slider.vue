@@ -1,3 +1,4 @@
+
 <template>
   <div ref="slider" class="keen-slider">
     <div class="keen-slider__slide number-slide1">1</div>
@@ -10,24 +11,26 @@
 </template>
 
 <script>
-import "keen-slider/keen-slider.min.css"
-import KeenSlider from "keen-slider"
+import "keen-slider/keen-slider.min.css";
+import KeenSlider from "keen-slider";
 
 export default {
   name: "Slider",
   mounted() {
-    this.slider = new KeenSlider(this.$refs.slider, {
-      slidesPerView: 2,
-      mode: "free-snap",
-      spacing: 15,
-      centered: true,
+    this.slider = new KeenSlider(this.$refs.slider,{
       loop: false,
-    })
+      mode:"free-snap",
+      slides: {
+        perView: 2,
+        spacing: 15,
+        origin: "center",
+      },
+    });
   },
   beforeDestroy() {
-    if (this.slider) this.slider.destroy()
-  },
-}
+    if (this.slider) this.slider.destroy();
+  }
+};
 </script>
 
 <style>
@@ -102,3 +105,6 @@ export default {
   );
 }
 </style>
+
+
+

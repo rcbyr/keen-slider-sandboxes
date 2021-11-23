@@ -2,6 +2,7 @@
   "name": "keen-slider-sandbox",
   "description": "keen-slider sandbox",
   "version": "0.0.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,17 +10,18 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@vue/cli-plugin-babel": "4.1.1",
+    "core-js": "^3.6.5",
     "keen-slider": "file:./../../../../keen-slider",
-    "vue": "^2.6.11"
+    "vue": "^3.0.0-0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-eslint": "4.1.1",
-    "@vue/cli-service": "4.1.1",
-    "babel-eslint": "^10.0.3",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0-0",
+    "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.0.1",
-    "vue-template-compiler": "^2.6.11"
+    "eslint-plugin-vue": "^7.0.0-0"
   },
   "eslintConfig": {
     "root": true,
@@ -27,22 +29,17 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/vue3-essential",
       "eslint:recommended"
     ],
-    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+    },
+    "rules": {}
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not ie <= 8"
+    "not dead"
   ]
 }

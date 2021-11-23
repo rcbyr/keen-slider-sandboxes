@@ -17,7 +17,15 @@ import KeenSlider from "keen-slider";
 export default {
   name: "Slider",
   mounted() {
-    this.slider = new KeenSlider(this.$refs.slider);
+    this.slider = new KeenSlider(this.$refs.slider,{
+      loop: false,
+      mode:"free-snap",
+      slides: {
+        perView: 2,
+        spacing: 15,
+        origin: "center",
+      },
+    });
   },
   beforeDestroy() {
     if (this.slider) this.slider.destroy();

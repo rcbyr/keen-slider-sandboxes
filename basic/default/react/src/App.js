@@ -3,8 +3,16 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "./styles.css"
 
-export default (props) => {
-  const [sliderRef] = useKeenSlider()
+export default () => {
+  const [sliderRef] = useKeenSlider({
+    loop: false,
+    mode: "free-snap",
+    slides: {
+      perView: 2,
+      spacing: 15,
+      origin: "center",
+    },
+  })
 
   return (
     <div ref={sliderRef} className="keen-slider">

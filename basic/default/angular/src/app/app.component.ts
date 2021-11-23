@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from "@angular/core"
-import KeenSlider from "keen-slider"
+import KeenSlider, { KeenSliderOptions } from "keen-slider"
 
 @Component({
   selector: "app-root",
@@ -15,7 +15,15 @@ export class AppComponent {
   slider: any = null
 
   ngAfterViewInit() {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement)
+    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
+      loop: false,
+      mode: "free-snap",
+      slides: {
+        perView: 2,
+        spacing: 15,
+        origin: "center",
+      },
+    } as KeenSliderOptions)
   }
 
   ngOnDestroy() {
