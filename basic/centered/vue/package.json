@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@vue/cli-plugin-babel": "4.1.1",
-    "keen-slider": "file:./../../../../keen-slider",
+    "keen-slider": "6.0.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {

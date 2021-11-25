@@ -10,15 +10,13 @@
 </template>
 
 <script>
-import {ref} from 'vue'
 import { useKeenSlider } from 'keen-slider/vue.es'
 import 'keen-slider/keen-slider.min.css'
 
 
 export default {
   setup(){
-    const options = ref({loop: true})
-    const [container] = useKeenSlider(options)
+    const [container] = useKeenSlider()
     return { container }
   }
 }

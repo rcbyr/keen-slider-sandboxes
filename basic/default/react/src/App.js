@@ -4,15 +4,7 @@ import "keen-slider/keen-slider.min.css"
 import "./styles.css"
 
 export default () => {
-  const [sliderRef] = useKeenSlider({
-    loop: false,
-    mode: "free-snap",
-    slides: {
-      perView: 2,
-      spacing: 15,
-      origin: "center",
-    },
-  })
+  const [sliderRef] = useKeenSlider()
 
   return (
     <div ref={sliderRef} className="keen-slider">
