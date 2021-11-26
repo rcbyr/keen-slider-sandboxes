@@ -1,6 +1,5 @@
-
 <template>
-  <div ref="slider" class="keen-slider">
+ <div ref="container" class="keen-slider">
     <div class="keen-slider__slide number-slide1">1</div>
     <div class="keen-slider__slide number-slide2">2</div>
     <div class="keen-slider__slide number-slide3">3</div>
@@ -11,20 +10,18 @@
 </template>
 
 <script>
-import "keen-slider/keen-slider.min.css";
-import KeenSlider from "keen-slider";
+import { useKeenSlider } from 'keen-slider/vue.es'
+import 'keen-slider/keen-slider.min.css'
+
 
 export default {
-  name: "Slider",
-  mounted() {
-    this.slider = new KeenSlider(this.$refs.slider,{
+  setup(){
+    const [container] = useKeenSlider({
         loop: true,
-      });
-  },
-  beforeDestroy() {
-    if (this.slider) this.slider.destroy();
+      })
+    return { container }
   }
-};
+}
 </script>
 
 <style>
@@ -99,6 +96,3 @@ export default {
   );
 }
 </style>
-
-
-

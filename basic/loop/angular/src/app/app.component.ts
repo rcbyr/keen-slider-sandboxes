@@ -15,7 +15,9 @@ export class AppComponent {
   slider: any = null
 
   ngAfterViewInit() {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement, { loop: true })
+    this.slider = new KeenSlider<{}>(this.sliderRef.nativeElement, {
+      loop: true,
+    })
   }
 
   ngOnDestroy() {
