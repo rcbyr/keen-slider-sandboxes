@@ -3,23 +3,17 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "./styles.css"
 
-export default (props) => {
+export default () => {
   const [sliderRef] = useKeenSlider({
-    spacing: 10,
-    slidesPerView: 1,
-    centered: true,
-    loop: true,
-    mode: "snap",
     breakpoints: {
-      "(min-width: 768px)": {
-        slidesPerView: 2,
-        mode: "free-snap",
+      "(min-width: 400px)": {
+        slides: { perView: 2, spacing: 5 },
       },
-      "(min-width: 1200px)": {
-        slidesPerView: 3,
-        mode: "free-snap",
+      "(min-width: 1000px)": {
+        slides: { perView: 3, spacing: 10 },
       },
     },
+    slides: { perView: 1 },
   })
 
   return (

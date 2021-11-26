@@ -18,12 +18,11 @@ export default {
   name: "Slider",
   mounted() {
     this.slider = new KeenSlider(this.$refs.slider,{
-      loop: false,
-      mode:"free-snap",
+      mode: "free-snap",
       slides: {
+        origin: "center",
         perView: 2,
         spacing: 15,
-        origin: "center",
       },
     });
   },
