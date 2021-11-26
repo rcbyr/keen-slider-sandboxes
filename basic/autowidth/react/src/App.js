@@ -12,7 +12,7 @@ export default () => {
   })
 
   return (
-    <div ref={sliderRef} className="keen-slider">
+    <div ref={sliderRef} className="keen-slider" style={{ maxWidth: 600 }}>
       <div
         className="keen-slider__slide number-slide1"
         style={{ maxWidth: 150, minWidth: 150 }}

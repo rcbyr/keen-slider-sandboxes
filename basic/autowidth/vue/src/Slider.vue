@@ -1,6 +1,6 @@
 
 <template>
-  <div ref="slider" class="keen-slider">
+  <div ref="slider" class="keen-slider" style="max-width: 600px">
     <div
       class="keen-slider__slide number-slide1"
       style="min-width: 150px; max-width: 150px"
