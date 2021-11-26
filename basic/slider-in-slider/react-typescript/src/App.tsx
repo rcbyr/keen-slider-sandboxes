@@ -29,8 +29,15 @@ export default function App() {
   return (
     <div ref={slider1Ref} className="keen-slider first">
       <div className="keen-slider__slide number-slide1">Slider 1</div>
-      <div className="keen-slider__slide number-slide2 min-w-full max-w-full">
-        <div ref={slider2Ref} className="keen-slider min-w-full max-w-full">
+      <div
+        className="keen-slider__slide number-slide2"
+        style={{ minWidth: "100%", maxWidth: "100%" }}
+      >
+        <div
+          ref={slider2Ref}
+          className="keen-slider"
+          style={{ minWidth: "100%", maxWidth: "100%" }}
+        >
           <div className="keen-slider__slide number-slide1">Slider 2</div>
           <div className="keen-slider__slide number-slide2">Slider 2</div>
           <div className="keen-slider__slide number-slide3">Slider 2</div>
@@ -39,8 +46,8 @@ export default function App() {
       <div className="keen-slider__slide number-slide3">
         <div
           ref={slider3Ref}
-          className="keen-slider w-full"
-          style={{ height: 200 }}
+          className="keen-slider"
+          style={{ height: 200, width: "100%" }}
         >
           <div className="keen-slider__slide number-slide1">Slider 3</div>
           <div className="keen-slider__slide number-slide2">Slider 3</div>

@@ -2,15 +2,15 @@
 <template>
   <div ref="slider1" class="keen-slider first">
     <div class="keen-slider__slide number-slide1">Slider 1</div>
-    <div class="keen-slider__slide number-slide2 min-w-full max-w-full">
-      <div ref="slider2" class="keen-slider min-w-full max-w-full">
+    <div class="keen-slider__slide number-slide2" style="min-height: 100%; max-width: 100%">
+      <div ref="slider2" class="keen-slider" style="min-height: 100%; max-width: 100%">
         <div class="keen-slider__slide number-slide1">Slider 2</div>
         <div class="keen-slider__slide number-slide2">Slider 2</div>
         <div class="keen-slider__slide number-slide3">Slider 2</div>
       </div>
     </div>
     <div class="keen-slider__slide number-slide3">
-      <div ref="slider3" class="keen-slider w-full" style="height: 200px">
+      <div ref="slider3" class="keen-slider" style="height: 200px; width: 100%;">
         <div class="keen-slider__slide number-slide1">Slider 3</div>
         <div class="keen-slider__slide number-slide2">Slider 3</div>
         <div class="keen-slider__slide number-slide3">Slider 3</div>
@@ -65,7 +65,7 @@ export default {
   font-size: 50px;
   color: #fff;
   font-weight: 500;
-  height: 300px;
+  height: 200px;
   max-height: 100vh;
 }
 
