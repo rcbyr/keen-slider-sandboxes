@@ -2,6 +2,7 @@ import * as React from "react"
 import "./styles.css"
 import { useKeenSlider, TrackDetails } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
+import randomColor from "randomcolor"
 
 export default function App() {
   const numberSlides = 4
