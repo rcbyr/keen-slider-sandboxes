@@ -1,6 +1,9 @@
-import { KeenSliderOptions } from "@/../keen-slider"
 import React, { useRef } from "react"
-import { TrackDetails, useKeenSlider } from "keen-slider/react"
+import {
+  KeenSliderOptions,
+  TrackDetails,
+  useKeenSlider,
+} from "keen-slider/react"
 
 export default function Wheel(props: {
   initIdx?: number
