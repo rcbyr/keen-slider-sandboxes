@@ -25,6 +25,12 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 [class^="number-slide"],
 [class*=" number-slide"] {
   background: grey;
