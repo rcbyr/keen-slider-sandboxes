@@ -9,7 +9,7 @@ body {
   height: 300px;
 }
 
-.keen-slider__slide.zoom-out__slide {
+.zoom-out .keen-slider__slide.zoom-out__slide {
   position: absolute;
 }
 
