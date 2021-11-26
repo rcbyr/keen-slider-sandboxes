@@ -1,15 +1,15 @@
 <template>
  <div ref="container" class="keen-slider">
-      <div className="keen-slider__slide number-slide1">1</div>
+      <div class="keen-slider__slide number-slide1">1</div>
       <div
-        className="keen-slider__slide number-slide2"
+        class="keen-slider__slide number-slide2"
         data-keen-slider-scrollable
         style="overflow-x: scroll"
       >
         <div style="min-width: 150%; text-align: center">.... 2 ....</div>
       </div>
       <div
-        className="keen-slider__slide number-slide3"
+        class="keen-slider__slide number-slide3"
         style="align-items: normal; overflow-y: scroll; text-align: center"
       >
         .
@@ -51,7 +51,7 @@ body {
   font-size: 50px;
   color: #fff;
   font-weight: 500;
-  height: 300px;
+  height: 200px;
   max-height: 100vh;
 }
 
