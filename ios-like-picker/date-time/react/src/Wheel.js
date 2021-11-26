@@ -76,46 +76,44 @@ export default function Wheel(props) {
   }
 
   return (
-    <>
+    <div
+      className={"wheel keen-slider wheel--perspective-" + perspective}
+      ref={sliderRef}
+    >
       <div
-        className={"wheel keen-slider wheel--perspective-" + perspective}
-        ref={sliderRef}
-      >
-        <div
-          className="wheel__shadow-top"
-          style={{
-            transform: `translateZ(${radius}px)`,
-            WebkitTransform: `translateZ(${radius}px)`,
-          }}
-        />
-        <div className="wheel__inner">
-          <div className="wheel__slides" style={{ width: props.width + "px" }}>
-            {slideValues().map(({ style, value }, idx) => (
-              <div className="wheel__slide" style={style} key={idx}>
-                <span>{value}</span>
-              </div>
-            ))}
-          </div>
-          {props.label && (
-            <div
-              className="wheel__label"
-              style={{
-                transform: `translateZ(${radius}px)`,
-                WebkitTransform: `translateZ(${radius}px)`,
-              }}
-            >
-              {props.label}
+        className="wheel__shadow-top"
+        style={{
+          transform: `translateZ(${radius}px)`,
+          WebkitTransform: `translateZ(${radius}px)`,
+        }}
+      />
+      <div className="wheel__inner">
+        <div className="wheel__slides" style={{ width: props.width + "px" }}>
+          {slideValues().map(({ style, value }, idx) => (
+            <div className="wheel__slide" style={style} key={idx}>
+              <span>{value}</span>
             </div>
-          )}
+          ))}
         </div>
-        <div
-          className="wheel__shadow-bottom"
-          style={{
-            transform: `translateZ(${radius}px)`,
-            WebkitTransform: `translateZ(${radius}px)`,
-          }}
-        />
+        {props.label && (
+          <div
+            className="wheel__label"
+            style={{
+              transform: `translateZ(${radius}px)`,
+              WebkitTransform: `translateZ(${radius}px)`,
+            }}
+          >
+            {props.label}
+          </div>
+        )}
       </div>
-    </>
+      <div
+        className="wheel__shadow-bottom"
+        style={{
+          transform: `translateZ(${radius}px)`,
+          WebkitTransform: `translateZ(${radius}px)`,
+        }}
+      />
+    </div>
   )
 }
