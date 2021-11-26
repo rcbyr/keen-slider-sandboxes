@@ -15,11 +15,13 @@ export class AppComponent {
   slider: any = null
 
   ngAfterViewInit() {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      slidesPerView: 3,
-      mode: "free-snap",
-      spacing: 15,
+    this.slider = new KeenSlider<{}>(this.sliderRef.nativeElement, {
       loop: true,
+      mode: "free-snap",
+      slides: {
+        perView: 3,
+        spacing: 15,
+      },
     })
   }
 

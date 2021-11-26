@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/keen-slider@5.5.0/keen-slider.min.css"
+      href="https://cdn.jsdelivr.net/npm/keen-slider@6.0.1/keen-slider.min.css"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -19,11 +19,13 @@
       <div class="keen-slider__slide number-slide5">5</div>
       <div class="keen-slider__slide number-slide6">6</div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/keen-slider@5.5.0/keen-slider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.0.1/keen-slider.min.js"></script>
     <script>
       var slider = new KeenSlider("#my-keen-slider", {
-        slidesPerView: 3,
-        spacing: 15,
+        slides: {
+          perView: 2,
+          spacing: 15,
+        },
       })
     </script>
   </body>

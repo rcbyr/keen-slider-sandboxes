@@ -3,8 +3,13 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "./styles.css"
 
-export default (props) => {
-  const [sliderRef] = useKeenSlider({ slidesPerView: 3, spacing: 15 })
+export default () => {
+  const [sliderRef] = useKeenSlider({
+    slides: {
+      perView: 2,
+      spacing: 15,
+    },
+  })
 
   return (
     <div ref={sliderRef} className="keen-slider">

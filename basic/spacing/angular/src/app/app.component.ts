@@ -15,9 +15,11 @@ export class AppComponent {
   slider: any = null
 
   ngAfterViewInit() {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      slidesPerView: 3,
-      spacing: 15,
+    this.slider = new KeenSlider<{}>(this.sliderRef.nativeElement, {
+      slides: {
+        perView: 2,
+        spacing: 15,
+      },
     })
   }
 

@@ -15,8 +15,10 @@ export class AppComponent {
   slider: any = null
 
   ngAfterViewInit() {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      slidesPerView: 2,
+    this.slider = new KeenSlider<{}>(this.sliderRef.nativeElement, {
+      slides: {
+        perView: 2,
+      },
     })
   }
 
