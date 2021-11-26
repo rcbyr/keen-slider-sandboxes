@@ -25,13 +25,13 @@ export class AppComponent {
       },
       selector: ".first > .keen-slider__slide",
     })
-    this.slider2 = new KeenSlider<{}>(this.sliderRef1.nativeElement, {
+    this.slider2 = new KeenSlider<{}>(this.sliderRef2.nativeElement, {
       rubberband: false,
       slides: {
         perView: 1.3,
       },
     })
-    this.slider3 = new KeenSlider<{}>(this.sliderRef1.nativeElement, {
+    this.slider3 = new KeenSlider<{}>(this.sliderRef3.nativeElement, {
       rubberband: false,
       slides: {
         perView: 1.3,
