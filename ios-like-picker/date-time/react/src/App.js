@@ -1,6 +1,7 @@
 import React from "react"
 import { format, subDays } from "date-fns"
 import Wheel from "./Wheel"
+import "./styles.css"
 
 export default () => {
   function formateDate(_relative, absolute) {
