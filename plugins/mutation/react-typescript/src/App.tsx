@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useState } from "react"
 import "./styles.css"
 import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
