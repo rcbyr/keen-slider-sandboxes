@@ -1,7 +1,7 @@
-import React from "react"
+import * as React from "react"
+import "./styles.css"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import "./styles.css"
 
 const images = [
   "https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
@@ -10,11 +10,11 @@ const images = [
   "https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
 ]
 
-export default () => {
-  const [loaded, setLoaded] = React.useState([])
+export default function App() {
+  const [loaded, setLoaded] = React.useState<boolean[]>([])
   const [currentSlide, setCurrentSlide] = React.useState(0)
 
-  const [sliderRef] = useKeenSlider({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     animationEnded(s) {
       setCurrentSlide(s.track.details.rel)
     },

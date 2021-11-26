@@ -1,5 +1,6 @@
 import React from "react"
 import { useKeenSlider } from "keen-slider/react"
+import "keen-slider/keen-slider.min.css"
 import "./styles.css"
 
 const images = [
@@ -9,15 +10,14 @@ const images = [
   "https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
 ]
 
-export default (props) => {
+export default () => {
   const [opacities, setOpacities] = React.useState([])
 
   const [sliderRef] = useKeenSlider({
     slides: images.length,
     loop: true,
-    duration: 3000,
-    move(s) {
-      const new_opacities = s.details().positions.map((slide) => slide.portion)
+    detailsChanged(s) {
+      const new_opacities = s.track.details.slides.map((slide) => slide.portion)
       setOpacities(new_opacities)
     },
   })

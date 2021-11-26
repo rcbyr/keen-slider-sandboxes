@@ -1,7 +1,7 @@
-import React from "react"
+import * as React from "react"
+import "./styles.css"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import "./styles.css"
 
 const images = [
   "https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
@@ -10,29 +10,27 @@ const images = [
   "https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
 ]
 
-export default () => {
-  const [loaded, setLoaded] = React.useState([])
-  const [currentSlide, setCurrentSlide] = React.useState(0)
+export default function App() {
+  const [opacities, setOpacities] = React.useState<number[]>([])
 
-  const [sliderRef] = useKeenSlider({
-    animationEnded(s) {
-      setCurrentSlide(s.track.details.rel)
-    },
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    slides: images.length,
     loop: true,
-    initial: 0,
+    detailsChanged(s) {
+      const new_opacities = s.track.details.slides.map((slide) => slide.portion)
+      setOpacities(new_opacities)
+    },
   })
 
-  React.useEffect(() => {
-    const new_loaded = [...loaded]
-    new_loaded[currentSlide] = true
-    setLoaded(new_loaded)
-  }, [currentSlide])
-
   return (
-    <div ref={sliderRef} className="keen-slider">
+    <div ref={sliderRef} className="fader">
       {images.map((src, idx) => (
-        <div key={idx} className="keen-slider__slide lazy__slide">
-          <img src={loaded[idx] ? src : ""} />
+        <div
+          key={idx}
+          className="fader__slide"
+          style={{ opacity: opacities[idx] }}
+        >
+          <img src={src} />
         </div>
       ))}
     </div>

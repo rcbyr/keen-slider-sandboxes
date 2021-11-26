@@ -1,13 +1,13 @@
-import React from "react"
-import { useKeenSlider } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
+import * as React from "react"
 import "./styles.css"
+import { useKeenSlider, TrackDetails } from "keen-slider/react"
+import "keen-slider/keen-slider.min.css"
 
-export default () => {
-  const [details, setDetails] = React.useState(null)
-  const [size, setSize] = React.useState(0)
+export default function App() {
+  const [details, setDetails] = React.useState<TrackDetails | null>(null)
+  const [size, setSize] = React.useState<number>(0)
 
-  const [sliderRef] = useKeenSlider({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     selector: null,
     slides: images.length,
@@ -18,7 +18,7 @@ export default () => {
     initial: 2,
   })
 
-  function positionStyle(idx) {
+  function positionStyle(idx: number) {
     if (!details) return {}
     const position = details.slides[idx]
     const x = size * position.distance
