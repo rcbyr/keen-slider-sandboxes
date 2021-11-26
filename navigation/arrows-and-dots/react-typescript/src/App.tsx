@@ -1,12 +1,12 @@
-import React from "react"
+import * as React from "react"
+import "./styles.css"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-import "./styles.css"
 
-export default () => {
+export default function App() {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [loaded, setLoaded] = useState(false)
-  const [sliderRef, propsRef] = useKeenSlider({
+  const [sliderRef, propsRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel)
@@ -61,12 +61,16 @@ export default () => {
           <>
             <Arrow
               left
-              onClick={(e) => e.stopPropagation() || propsRef.current?.prev()}
+              onClick={(e: any) =>
+                e.stopPropagation() || propsRef.current?.prev()
+              }
               disabled={currentSlide === 0}
             />
 
             <Arrow
-              onClick={(e) => e.stopPropagation() || propsRef.current?.next()}
+              onClick={(e: any) =>
+                e.stopPropagation() || propsRef.current?.next()
+              }
               disabled={
                 currentSlide ===
                 propsRef.current.track.details.slides.length - 1
@@ -96,7 +100,11 @@ export default () => {
   )
 }
 
-function Arrow(props) {
+function Arrow(props: {
+  disabled: boolean
+  left?: boolean
+  onClick: (e: any) => void
+}) {
   const disabeld = props.disabled ? " arrow--disabled" : ""
   return (
     <>
