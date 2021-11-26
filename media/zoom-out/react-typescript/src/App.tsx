@@ -1,7 +1,7 @@
 import * as React from "react"
+import "keen-slider/keen-slider.min.css"
 import "./styles.css"
 import { useKeenSlider, TrackDetails } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
 
 const images = [
   "https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
