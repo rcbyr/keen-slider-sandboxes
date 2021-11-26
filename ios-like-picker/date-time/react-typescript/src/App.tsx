@@ -2,7 +2,7 @@ import React from "react"
 import { format, subDays } from "date-fns"
 
 export default () => {
-  function formateDate(_relative, absolute) {
+  function formateDate(_relative: number, absolute: number) {
     return format(subDays(new Date(), absolute), "iii d LLL")
   }
   return (
