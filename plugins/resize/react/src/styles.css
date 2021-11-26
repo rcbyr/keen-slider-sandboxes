@@ -75,3 +75,24 @@ body {
     rgba(174, 63, 255, 1) 100%
   );
 }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.buttons {
+  display: flex;
+  padding-top: 7px;
+  justify-content: center;
+}
+
+button {
+  min-width: 100px;
+  margin: 0 10px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-size: 13px;
+  padding: 7px 15px;
+  border-radius: 3px;
+  font-weight: bold;
+}

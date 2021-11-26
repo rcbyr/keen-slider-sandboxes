@@ -1,10 +1,3 @@
-body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 [class^="number-slide"],
 [class*=" number-slide"] {
   background: grey;
@@ -67,6 +60,7 @@ body {
     rgba(255, 63, 63, 1) 100%
   );
 }
+
 .number-slide6 {
   background: rgb(64, 76, 255);
   background: linear-gradient(

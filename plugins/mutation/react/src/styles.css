@@ -67,6 +67,7 @@ body {
     rgba(255, 63, 63, 1) 100%
   );
 }
+
 .number-slide6 {
   background: rgb(64, 76, 255);
   background: linear-gradient(
@@ -74,4 +75,25 @@ body {
     rgba(64, 76, 255, 1) 0%,
     rgba(174, 63, 255, 1) 100%
   );
+}
+
+.keen-slider {
+  height: 200px;
+}
+
+.buttons {
+  display: flex;
+  padding-top: 7px;
+  justify-content: center;
+}
+
+button {
+  min-width: 100px;
+  margin: 0 10px;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-size: 13px;
+  padding: 7px 15px;
+  border-radius: 3px;
+  font-weight: bold;
 }
