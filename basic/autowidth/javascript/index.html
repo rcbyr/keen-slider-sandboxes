@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keen-Slider</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/keen-slider@6.0.1/keen-slider.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div id="my-keen-slider" class="keen-slider">
+      <div
+        class="keen-slider__slide number-slide1"
+        style="min-width: 150px; max-width: 150px"
+      >
+        1
+      </div>
+      <div
+        class="keen-slider__slide number-slide2"
+        style="min-width: 100px; max-width: 100px"
+      >
+        2
+      </div>
+      <div
+        class="keen-slider__slide number-slide3"
+        style="min-width: 200px; max-width: 200px"
+      >
+        3
+      </div>
+      <div
+        class="keen-slider__slide number-slide4"
+        style="min-width: 500px; max-width: 500px"
+      >
+        4
+      </div>
+      <div
+        class="keen-slider__slide number-slide5"
+        style="min-width: 150px; max-width: 150px"
+      >
+        5
+      </div>
+      <div
+        class="keen-slider__slide number-slide6"
+        style="min-width: 75px; max-width: 75px"
+      >
+        6
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.0.1/keen-slider.min.js"></script>
+    <script>
+      var slider = new KeenSlider("#my-keen-slider", {
+        loop: false,
+        mode: "snap",
+        rtl: false,
+        slides: { perView: "auto" },
+      })
+    </script>
+  </body>
+</html>
