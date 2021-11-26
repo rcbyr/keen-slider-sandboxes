@@ -1,20 +1,96 @@
-import * as React from "react"
+import React, { useState } from "react"
 import "./styles.css"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
 export default function App() {
-  const [ref] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-  })
+  const [scrolling, setScrolling] = useState(true)
+  const smallHeight = React.useRef(0)
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>(
+    {
+      initial: 2,
+      vertical: true,
+      rubberband: true,
+      slides: (size, elements) => {
+        smallHeight.current = elements[0].getBoundingClientRect().height
+        const mediumHeight = elements[1].getBoundingClientRect().height
+
+        size -= smallHeight.current
+        console.log(size, smallHeight.current, elements)
+
+        return [
+          { size: smallHeight.current / size, origin: 0 },
+          { size: mediumHeight / size, origin: 0 },
+          {
+            size: (size - smallHeight.current - mediumHeight) / size,
+            origin: -(size - smallHeight.current - mediumHeight) / size,
+          },
+        ]
+      },
+      detailsChanged(slider) {
+        const y =
+          (slider.size - smallHeight.current) *
+          slider.track.details.length *
+          slider.track.details.progress *
+          -1
+        slider.container.style.transform = `translate3d(0, ${Math.round(
+          y
+        )}px, 0)`
+      },
+      slideChanged(slider) {
+        setScrolling(slider.track.details.rel === 2)
+        // desktop fix
+        slider.container
+          .querySelector(".card__inner__scrolling")
+          ?.scrollTo(0, 0)
+      },
+    },
+    {
+      renderer: false,
+    }
+  )
+
   return (
-    <div ref={ref} className="keen-slider">
-      <div className="keen-slider__slide number-slide1">1</div>
-      <div className="keen-slider__slide number-slide2">2</div>
-      <div className="keen-slider__slide number-slide3">3</div>
-      <div className="keen-slider__slide number-slide4">4</div>
-      <div className="keen-slider__slide number-slide5">5</div>
-      <div className="keen-slider__slide number-slide6">6</div>
+    <div className="card">
+      <div className="card__inner keen-slider" ref={sliderRef}>
+        <div
+          className="card__inner__scrolling"
+          data-keen-slider-scrollable
+          style={{
+            height: "100%",
+            overflowY: scrolling ? "scroll" : "visible",
+          }}
+        >
+          <div className="indicatorWrapper">
+            <div className="indicator"></div>
+          </div>
+          <div className="keen-slider__slide small">
+            <div className="title">Some Title</div>
+            <div className="subtitle">Subtitle</div>
+          </div>
+          <div className="keen-slider__slide medium">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          </div>
+          <div className="keen-slider__slide large">
+            <br />
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet Lorem ipsum
+            dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+            dolor sit amet. Lorem ipsum dolor sit amet tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
