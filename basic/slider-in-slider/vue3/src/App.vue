@@ -1,8 +1,8 @@
 <template>
   <div ref="slider1" class="keen-slider first">
     <div class="keen-slider__slide number-slide1">Slider 1</div>
-    <div class="keen-slider__slide number-slide2" style="min-height: 100%; max-width: 100%">
-      <div ref="slider2" class="keen-slider" style="min-height: 100%; max-width: 100%">
+    <div class="keen-slider__slide number-slide2" style="min-width: 100%; max-width: 100%">
+      <div ref="slider2" class="keen-slider" style="min-width: 100%; max-width: 100%">
         <div class="keen-slider__slide number-slide1">Slider 2</div>
         <div class="keen-slider__slide number-slide2">Slider 2</div>
         <div class="keen-slider__slide number-slide3">Slider 2</div>
