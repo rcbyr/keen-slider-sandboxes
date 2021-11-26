@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keen-Slider</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/keen-slider@6.0.1/keen-slider.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div id="my-keen-slider" class="keen-slider">
+      <div className="keen-slider__slide number-slide1">1</div>
+      <div
+        className="keen-slider__slide number-slide2"
+        data-keen-slider-scrollable
+        style="overflow-x: scroll"
+      >
+        <div style="min-width: 150%; text-align: center">.... 2 ....</div>
+      </div>
+      <div
+        className="keen-slider__slide number-slide3"
+        style="align-items: normal; overflow-y: scroll; text-align: center"
+      >
+        .
+        <br />. <br />3 <br />. <br />.
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.0.1/keen-slider.min.js"></script>
+    <script>
+      var slider = new KeenSlider("#my-keen-slider", {
+        slides: {
+          origin: "center",
+        },
+      })
+    </script>
+  </body>
+</html>

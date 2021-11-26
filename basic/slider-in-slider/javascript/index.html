@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keen-Slider</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/keen-slider@6.0.1/keen-slider.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div id="my-keen-slider1" class="keen-slider first">
+      <div class="keen-slider__slide number-slide1">Slider 1</div>
+      <div class="keen-slider__slide number-slide2 min-w-full max-w-full">
+        <div id="my-keen-slider2" class="keen-slider min-w-full max-w-full">
+          <div class="keen-slider__slide number-slide1">Slider 2</div>
+          <div class="keen-slider__slide number-slide2">Slider 2</div>
+          <div class="keen-slider__slide number-slide3">Slider 2</div>
+        </div>
+      </div>
+      <div class="keen-slider__slide number-slide3">
+        <div
+          id="my-keen-slider3"
+          class="keen-slider w-full"
+          style="height: 200px"
+        >
+          <div class="keen-slider__slide number-slide1">Slider 3</div>
+          <div class="keen-slider__slide number-slide2">Slider 3</div>
+          <div class="keen-slider__slide number-slide3">Slider 3</div>
+        </div>
+      </div>
+      <div class="keen-slider__slide number-slide4">Slider 1</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.0.1/keen-slider.min.js"></script>
+    <script>
+      var slider1 = new KeenSlider("#my-keen-slider1", {
+        slides: {
+          origin: "center",
+        },
+        selector: ".first > .keen-slider__slide",
+      })
+      var slider2 = new KeenSlider("#my-keen-slider2", {
+        rubberband: false,
+        slides: {
+          perView: 1.3,
+        },
+      })
+      var slider3 = new KeenSlider("#my-keen-slider3", {
+        rubberband: false,
+        slides: {
+          perView: 1.3,
+        },
+        vertical: true,
+      })
+    </script>
+  </body>
+</html>
