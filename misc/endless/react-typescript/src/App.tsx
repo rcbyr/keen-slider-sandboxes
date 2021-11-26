@@ -1,20 +1,43 @@
 import * as React from "react"
 import "./styles.css"
-import { useKeenSlider } from "keen-slider/react"
+import { useKeenSlider, TrackDetails } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
 export default function App() {
-  const [ref] = useKeenSlider<HTMLDivElement>({
+  const numberSlides = 4
+  const [slidesDetails, setSlidesDetails] = React.useState<TrackDetails>(null)
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    initial: 0,
     loop: true,
+
+    mode: "free-snap",
+    detailsChanged: (s) => {
+      setSlidesDetails(s.track.details.slides)
+    },
+    slides: {
+      number: numberSlides,
+      perView: 3,
+    },
   })
+
   return (
-    <div ref={ref} className="keen-slider">
-      <div className="keen-slider__slide number-slide1">1</div>
-      <div className="keen-slider__slide number-slide2">2</div>
-      <div className="keen-slider__slide number-slide3">3</div>
-      <div className="keen-slider__slide number-slide4">4</div>
-      <div className="keen-slider__slide number-slide5">5</div>
-      <div className="keen-slider__slide number-slide6">6</div>
+    <div className="keen-slider" ref={sliderRef}>
+      {[...Array(numberSlides).keys()].map((idx) => {
+        return (
+          <div
+            key={idx}
+            className="keen-slider__slide endlessSlide"
+            style={{
+              backgroundColor: randomColor({
+                seed: Math.abs(slidesDetails ? slidesDetails[idx].abs : idx),
+                luminosity: "light",
+              }),
+            }}
+          >
+            {slidesDetails ? slidesDetails[idx].abs : idx}
+          </div>
+        )
+      })}
     </div>
   )
 }
