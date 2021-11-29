@@ -3,7 +3,7 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "./styles.css"
 
-const AdaptiveHeight: KeenSliderPlugin = (slider) => {
+const AdaptiveHeight = (slider) => {
   function updateHeight() {
     slider.container.style.height =
       slider.slides[slider.track.details.rel].offsetHeight + "px"
@@ -15,10 +15,8 @@ const AdaptiveHeight: KeenSliderPlugin = (slider) => {
 export default function App() {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [loaded, setLoaded] = useState(false)
-  const [sliderRef, propsRef] =
-    useKeenSlider <
-    HTMLDivElement >
-    ({
+  const [sliderRef, propsRef] = useKeenSlider(
+    {
       initial: 0,
       slideChanged(s) {
         setCurrentSlide(s.track.details.rel)
@@ -27,7 +25,8 @@ export default function App() {
         setLoaded(true)
       },
     },
-    [AdaptiveHeight])
+    [AdaptiveHeight]
+  )
 
   return (
     <>
@@ -64,16 +63,12 @@ export default function App() {
           <>
             <Arrow
               left
-              onClick={(e: any) =>
-                e.stopPropagation() || propsRef.current?.prev()
-              }
+              onClick={(e) => e.stopPropagation() || propsRef.current?.prev()}
               disabled={currentSlide === 0}
             />
 
             <Arrow
-              onClick={(e: any) =>
-                e.stopPropagation() || propsRef.current?.next()
-              }
+              onClick={(e) => e.stopPropagation() || propsRef.current?.next()}
               disabled={
                 currentSlide ===
                 propsRef.current.track.details.slides.length - 1
