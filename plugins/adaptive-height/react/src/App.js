@@ -1,31 +1,64 @@
 import React, { useState } from "react"
-import "./styles.css"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
+import "./styles.css"
+
+const AdaptiveHeight: KeenSliderPlugin = (slider) => {
+  function updateHeight() {
+    slider.container.style.height =
+      slider.slides[slider.track.details.rel].offsetHeight + "px"
+  }
+  slider.on("created", updateHeight)
+  slider.on("slideChanged", updateHeight)
+}
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [loaded, setLoaded] = useState(false)
-  const [sliderRef, propsRef] = useKeenSlider<HTMLDivElement>({
-    initial: 0,
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
+  const [sliderRef, propsRef] =
+    useKeenSlider <
+    HTMLDivElement >
+    ({
+      initial: 0,
+      slideChanged(s) {
+        setCurrentSlide(s.track.details.rel)
+      },
+      created() {
+        setLoaded(true)
+      },
     },
-    created() {
-      setLoaded(true)
-    },
-  })
+    [AdaptiveHeight])
 
   return (
     <>
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
           <div className="keen-slider__slide number-slide1">1</div>
-          <div className="keen-slider__slide number-slide2">2</div>
-          <div className="keen-slider__slide number-slide3">3</div>
+          <div
+            className="keen-slider__slide number-slide2"
+            style={{ height: 100 }}
+          >
+            2
+          </div>
+          <div
+            className="keen-slider__slide number-slide3"
+            style={{ height: 150 }}
+          >
+            3
+          </div>
           <div className="keen-slider__slide number-slide4">4</div>
-          <div className="keen-slider__slide number-slide5">5</div>
-          <div className="keen-slider__slide number-slide6">6</div>
+          <div
+            className="keen-slider__slide number-slide5"
+            style={{ height: 75 }}
+          >
+            5
+          </div>
+          <div
+            className="keen-slider__slide number-slide6"
+            style={{ height: 100 }}
+          >
+            6
+          </div>
         </div>
         {loaded && propsRef.current && (
           <>
@@ -70,11 +103,7 @@ export default function App() {
   )
 }
 
-function Arrow(props: {
-  disabled: boolean
-  left?: boolean
-  onClick: (e: any) => void
-}) {
+function Arrow(props) {
   const disabeld = props.disabled ? " arrow--disabled" : ""
   return (
     <svg
