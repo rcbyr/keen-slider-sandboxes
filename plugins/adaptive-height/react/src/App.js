@@ -15,7 +15,7 @@ const AdaptiveHeight = (slider) => {
 export default function App() {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [loaded, setLoaded] = useState(false)
-  const [sliderRef, propsRef] = useKeenSlider(
+  const [sliderRef, instanceRef] = useKeenSlider(
     {
       initial: 0,
       slideChanged(s) {
@@ -59,39 +59,43 @@ export default function App() {
             6
           </div>
         </div>
-        {loaded && propsRef.current && (
+        {loaded && instanceRef.current && (
           <>
             <Arrow
               left
-              onClick={(e) => e.stopPropagation() || propsRef.current?.prev()}
+              onClick={(e) =>
+                e.stopPropagation() || instanceRef.current?.prev()
+              }
               disabled={currentSlide === 0}
             />
 
             <Arrow
-              onClick={(e) => e.stopPropagation() || propsRef.current?.next()}
+              onClick={(e) =>
+                e.stopPropagation() || instanceRef.current?.next()
+              }
               disabled={
                 currentSlide ===
-                propsRef.current.track.details.slides.length - 1
+                instanceRef.current.track.details.slides.length - 1
               }
             />
           </>
         )}
       </div>
-      {loaded && propsRef.current && (
+      {loaded && instanceRef.current && (
         <div className="dots">
-          {[...Array(propsRef.current.track.details.slides.length).keys()].map(
-            (idx) => {
-              return (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    propsRef.current?.moveToIdx(idx)
-                  }}
-                  className={"dot" + (currentSlide === idx ? " active" : "")}
-                ></button>
-              )
-            }
-          )}
+          {[
+            ...Array(instanceRef.current.track.details.slides.length).keys(),
+          ].map((idx) => {
+            return (
+              <button
+                key={idx}
+                onClick={() => {
+                  instanceRef.current?.moveToIdx(idx)
+                }}
+                className={"dot" + (currentSlide === idx ? " active" : "")}
+              ></button>
+            )
+          })}
         </div>
       )}
     </>
