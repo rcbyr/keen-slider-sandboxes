@@ -9,7 +9,7 @@
   ],
   "main": "src/index.tsx",
   "dependencies": {
-    "keen-slider": "6.1.0",
+    "keen-slider": "6.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "4.0.3"
