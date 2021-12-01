@@ -36,7 +36,7 @@ function ThumbnailPlugin(mainRef) {
   }
 }
 
-const Component = () => {
+export default function App() {
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
   })
