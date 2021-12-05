@@ -4,36 +4,41 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
 export default function App() {
-  const [pause, setPause] = React.useState(false)
-  const timer = React.useRef<any>()
-  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
-    loop: true,
-    created(s) {
-      s.container.addEventListener("mouseover", () => {
-        setPause(true)
-      })
-      s.container.addEventListener("mouseout", () => {
-        setPause(false)
-      })
+  const [sliderRef] = useKeenSlider<HTMLDivElement>(
+    {
+      loop: true,
     },
-    dragStarted: () => {
-      setPause(true)
-    },
-    dragEnded: () => {
-      setPause(false)
-    },
-  })
-
-  React.useEffect(() => {
-    timer.current = setInterval(() => {
-      if (!pause && slider && !document.hidden) {
-        slider.current?.next()
-      }
-    }, 2000)
-    return () => {
-      clearInterval(timer.current)
-    }
-  }, [pause, slider])
+    [
+      (slider) => {
+        let timeout: ReturnType<typeof setTimeout>
+        let mouseOver = false
+        function clearNextTimeout() {
+          clearTimeout(timeout)
+        }
+        function nextTimeout() {
+          clearTimeout(timeout)
+          if (mouseOver) return
+          timeout = setTimeout(() => {
+            slider.next()
+          }, 2000)
+        }
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
+            mouseOver = true
+            clearNextTimeout()
+          })
+          slider.container.addEventListener("mouseout", () => {
+            mouseOver = false
+            nextTimeout()
+          })
+          nextTimeout()
+        })
+        slider.on("dragStarted", clearNextTimeout)
+        slider.on("animationEnded", nextTimeout)
+        slider.on("updated", nextTimeout)
+      },
+    ]
+  )
 
   return (
     <>
