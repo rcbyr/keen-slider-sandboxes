@@ -19,19 +19,19 @@ export class AppComponent {
   slider3: any = null
 
   ngAfterViewInit() {
-    this.slider1 = new KeenSlider<{}>(this.sliderRef1.nativeElement, {
+    this.slider1 = new KeenSlider(this.sliderRef1.nativeElement, {
       slides: {
         origin: "center",
       },
       selector: ".first > .keen-slider__slide",
     })
-    this.slider2 = new KeenSlider<{}>(this.sliderRef2.nativeElement, {
+    this.slider2 = new KeenSlider(this.sliderRef2.nativeElement, {
       rubberband: false,
       slides: {
         perView: 1.3,
       },
     })
-    this.slider3 = new KeenSlider<{}>(this.sliderRef3.nativeElement, {
+    this.slider3 = new KeenSlider(this.sliderRef3.nativeElement, {
       rubberband: false,
       slides: {
         perView: 1.3,

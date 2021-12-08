@@ -15,7 +15,7 @@ export class AppComponent {
   slider: any = null
 
   ngAfterViewInit() {
-    this.slider = new KeenSlider<{}>(this.sliderRef.nativeElement, {
+    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
       breakpoints: {
         "(min-width: 400px)": {
           slides: { perView: 2, spacing: 5 },
