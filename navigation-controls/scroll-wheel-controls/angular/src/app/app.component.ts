@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from "@angular/core"
-import KeenSlider from "keen-slider"
+import KeenSlider, { KeenSliderInstance } from "keen-slider"
 
 const WheelControls = (slider) => {
   let touchTimeout

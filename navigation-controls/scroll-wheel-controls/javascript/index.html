@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keen-Slider</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/keen-slider@6.3.3/keen-slider.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div id="my-keen-slider" class="keen-slider" style="height: 200px">
+      <div class="keen-slider__slide number-slide1">1</div>
+      <div class="keen-slider__slide number-slide2">2</div>
+      <div class="keen-slider__slide number-slide3">3</div>
+      <div class="keen-slider__slide number-slide4">4</div>
+      <div class="keen-slider__slide number-slide5">5</div>
+      <div class="keen-slider__slide number-slide6">6</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.3.3/keen-slider.min.js"></script>
+    <script>
+      function WheelControls(slider) {
+        var touchTimeout
+        var position
+        var wheelActive
+
+        function dispatch(e, name) {
+          position.x -= e.deltaX
+          position.y -= e.deltaY
+          slider.container.dispatchEvent(
+            new CustomEvent(name, {
+              detail: {
+                x: position.x,
+                y: position.y,
+              },
+            })
+          )
+        }
+
+        function wheelStart(e) {
+          position = {
+            x: e.pageX,
+            y: e.pageY,
+          }
+          dispatch(e, "ksDragStart")
+        }
+
+        function wheel(e) {
+          dispatch(e, "ksDrag")
+        }
+
+        function wheelEnd(e) {
+          dispatch(e, "ksDragEnd")
+        }
+
+        function eventWheel(e) {
+          e.preventDefault()
+          if (!wheelActive) {
+            wheelStart(e)
+            wheelActive = true
+          }
+          wheel(e)
+          clearTimeout(touchTimeout)
+          touchTimeout = setTimeout(() => {
+            wheelActive = false
+            wheelEnd(e)
+          }, 50)
+        }
+
+        slider.on("created", () => {
+          slider.container.addEventListener("wheel", eventWheel, {
+            passive: false,
+          })
+        })
+      }
+
+      var slider = new KeenSlider(
+        "#my-keen-slider",
+        {
+          loop: false,
+          rubberband: false,
+          vertical: true,
+        },
+        [WheelControls]
+      )
+    </script>
+  </body>
+</html>
