@@ -80,6 +80,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 [class^="number-slide"],
 [class*=" number-slide"] {
   background: grey;
@@ -89,7 +90,7 @@ body {
   font-size: 50px;
   color: #fff;
   font-weight: 500;
-  height: 300px;
+  height: 200px;
   max-height: 100vh;
 }
 
@@ -142,6 +143,7 @@ body {
     rgba(255, 63, 63, 1) 100%
   );
 }
+
 .number-slide6 {
   background: rgb(64, 76, 255);
   background: linear-gradient(
@@ -150,4 +152,17 @@ body {
     rgba(174, 63, 255, 1) 100%
   );
 }
+
+.thumbnail .keen-slider__slide {
+  font-size: 30px;
+  margin-top: 10px;
+  height: 100px;
+}
+.thumbnail .keen-slider__slide {
+  cursor: pointer;
+}
+.thumbnail .keen-slider__slide.active {
+  border: 2px dashed black;
+}
+
 </style>
