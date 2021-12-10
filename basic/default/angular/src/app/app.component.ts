@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from "@angular/core"
-import KeenSlider from "keen-slider"
+import KeenSlider, { KeenSliderInstance } from "keen-slider"
 
 @Component({
   selector: "app-root",
@@ -12,7 +12,7 @@ import KeenSlider from "keen-slider"
 export class AppComponent {
   @ViewChild("sliderRef") sliderRef: ElementRef<HTMLElement>
 
-  slider: any = null
+  slider: KeenSliderInstance = null
 
   ngAfterViewInit() {
     this.slider = new KeenSlider(this.sliderRef.nativeElement)
