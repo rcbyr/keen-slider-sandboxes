@@ -23,7 +23,7 @@
     *ngIf="slider"
     [ngClass]="
       'arrow arrow--right ' +
-      (slider.track.details.slides - 1 === currentSlide
+      (slider.track.details.slides.length - 1 === currentSlide
         ? 'arrow--disabled'
         : '')
     "

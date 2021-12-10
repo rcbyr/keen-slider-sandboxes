@@ -1,7 +1,8 @@
 <template>
   <div>
+    
     <div class="navigation-wrapper">
-      <div ref="slider" class="keen-slider">
+      <div ref="container" class="keen-slider">
         <div class="keen-slider__slide number-slide1">1</div>
         <div class="keen-slider__slide number-slide2">2</div>
         <div class="keen-slider__slide number-slide3">3</div>
@@ -10,7 +11,7 @@
         <div class="keen-slider__slide number-slide6">6</div>
       </div>
       <svg
-        @click="sliderRef.value.prev()"
+        @click="slider.prev()"
         :class="{
           arrow: true,
           'arrow--left': true,
@@ -25,11 +26,11 @@
       </svg>
       <svg
         v-if="slider"
-        @click="sliderRef.value.next()"
+        @click="slider.next()"
         :class="{
           arrow: true,
           'arrow--right': true,
-          'arrow--disabled': current === sliderRef.value.track.details.slides.length - 1,
+          'arrow--disabled': current === slider.track.details.slides.length - 1,
         }"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -40,7 +41,7 @@
     <div v-if="slider" class="dots">
       <button
         v-for="(_slide, idx) in dotHelper"
-        @click="sliderRef.value.moveToIdx(idx)"
+        @click="slider.moveToIdx(idx)"
         :class="{ dot: true, active: current === idx }"
         :key="idx"
       ></button>
@@ -49,7 +50,7 @@
 </template>
 
 <script>
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
 
 import { useKeenSlider } from 'keen-slider/vue.es'
 import 'keen-slider/keen-slider.min.css'
@@ -57,25 +58,23 @@ import 'keen-slider/keen-slider.min.css'
 
 export default {
   setup(){
+
     const current = ref(1)
     const [container, slider] = useKeenSlider({
-      initial: this.current.value,
+      initial: current.value,
       slideChanged: (s) => {
-        this.current.value = s.track.details.rel
+        current.value = s.track.details.rel
       },
     })
-    return { container, current, slider }
+
+    const dotHelper = computed(() => slider.value ? [...Array(slider.value.track.details.slides.length).keys()] : [])
+    console.log(slider)
+    return { container, current, dotHelper, slider }
   }
 }
 </script>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 [class^="number-slide"],
 [class*=" number-slide"] {
   background: grey;
@@ -85,10 +84,8 @@ body {
   font-size: 50px;
   color: #fff;
   font-weight: 500;
-  height: 300px;
-  max-height: 100vh;
+  height: 200px;
 }
-
 .number-slide1 {
   background: rgb(64, 175, 255);
   background: linear-gradient(
@@ -97,7 +94,6 @@ body {
     rgba(63, 97, 255, 1) 100%
   );
 }
-
 .number-slide2 {
   background: rgb(255, 75, 64);
   background: linear-gradient(
@@ -106,7 +102,6 @@ body {
     rgba(255, 75, 64, 1) 100%
   );
 }
-
 .number-slide3 {
   background: rgb(182, 255, 64);
   background: linear-gradient(
@@ -120,7 +115,6 @@ body {
     rgba(43, 250, 82, 1) 100%
   );
 }
-
 .number-slide4 {
   background: rgb(64, 255, 242);
   background: linear-gradient(
@@ -129,7 +123,6 @@ body {
     rgba(63, 188, 255, 1) 100%
   );
 }
-
 .number-slide5 {
   background: rgb(255, 64, 156);
   background: linear-gradient(
@@ -145,5 +138,49 @@ body {
     rgba(64, 76, 255, 1) 0%,
     rgba(174, 63, 255, 1) 100%
   );
+}
+.navigation-wrapper {
+  position: relative;
+}
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+}
+.dot {
+  border: none;
+  width: 10px;
+  height: 10px;
+  background: #c5c5c5;
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+.dot:focus {
+  outline: none;
+}
+.dot.active {
+  background: #000;
+}
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+}
+.arrow--left {
+  left: 5px;
+}
+.arrow--right {
+  left: auto;
+  right: 5px;
+}
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
 }
 </style>

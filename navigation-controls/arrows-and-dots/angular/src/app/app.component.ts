@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from "@angular/core"
-import KeenSlider from "keen-slider"
+import KeenSlider, { KeenSliderInstance } from "keen-slider"
 
 @Component({
   selector: "app-root",
@@ -14,7 +14,7 @@ export class AppComponent {
 
   currentSlide: number = 1
   dotHelper: Array<Number> = []
-  slider: KeenSlider = null
+  slider: KeenSliderInstance = null
 
   ngAfterViewInit() {
     setTimeout(() => {
