@@ -18,7 +18,7 @@ export default {
   name: "Slider",
   mounted() {
     this.slider = new KeenSlider(this.$refs.slider,{
-      mode: 'free-snap',
+      mode: 'snap',
       slides: () => [
         {
           size: 0.1,

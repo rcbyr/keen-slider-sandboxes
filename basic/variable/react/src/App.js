@@ -5,7 +5,7 @@ import "./styles.css"
 
 export default () => {
   const [sliderRef] = useKeenSlider({
-    mode: "free-snap",
+    mode: "snap",
     slides: () => [
       {
         size: 0.1,

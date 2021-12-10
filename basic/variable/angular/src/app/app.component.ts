@@ -16,7 +16,7 @@ export class AppComponent {
 
   ngAfterViewInit() {
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      mode: "free-snap",
+      mode: "snap",
       slides: () => [
         {
           size: 0.1,

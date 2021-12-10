@@ -17,7 +17,7 @@ import 'keen-slider/keen-slider.min.css'
 export default {
   setup(){
     const [container] = useKeenSlider({
-      mode: 'free-snap',
+      mode: 'snap',
       slides: () => [
         {
           size: 0.1,

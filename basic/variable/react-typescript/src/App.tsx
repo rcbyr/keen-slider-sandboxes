@@ -5,7 +5,7 @@ import "keen-slider/keen-slider.min.css"
 
 export default function App() {
   const [ref] = useKeenSlider<HTMLDivElement>({
-    mode: "free-snap",
+    mode: "snap",
     slides: () => [
       {
         size: 0.1,
