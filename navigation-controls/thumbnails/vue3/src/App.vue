@@ -58,7 +58,7 @@ function ThumbnailPlugin(main) {
 
 export default {
   setup(){
-    const [container] = useKeenSlider()
+    const [container, slider] = useKeenSlider()
     const [thumbnail] = useKeenSlider(
       {
         initial: 0,
@@ -67,7 +67,7 @@ export default {
           spacing: 10,
         },
       },
-      [ThumbnailPlugin(this.slider)])
+      [ThumbnailPlugin(slider.value)])
     return { container, thumbnail }
   }
 }
