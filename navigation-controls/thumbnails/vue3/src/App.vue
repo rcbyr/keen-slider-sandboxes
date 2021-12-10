@@ -38,7 +38,7 @@ function ThumbnailPlugin(main) {
     function addClickEvents() {
       slider.slides.forEach((slide, idx) => {
         slide.addEventListener("click", () => {
-          main.moveToIdx(idx)
+          main.value.moveToIdx(idx)
         })
       })
     }
@@ -46,9 +46,9 @@ function ThumbnailPlugin(main) {
     slider.on("created", () => {
       addActive(slider.track.details.rel)
       addClickEvents()
-      main.on("animationStarted", (main) => {
+      main.value.on("animationStarted", () => {
         removeActive()
-        const next = main.animator.targetIdx || 0
+        const next = main.value.animator.targetIdx || 0
         addActive(next)
         slider.moveToIdx(next)
       })
@@ -67,7 +67,7 @@ export default {
           spacing: 10,
         },
       },
-      [ThumbnailPlugin(slider.value)])
+      [ThumbnailPlugin(slider)])
     return { container, thumbnail }
   }
 }
