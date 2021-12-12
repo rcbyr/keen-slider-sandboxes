@@ -39,14 +39,16 @@
     <script>
       var elements = document.querySelectorAll(".fader__slide")
       var slider = new KeenSlider("#my-keen-slider", {
-        slides: this.images.length,
+        slides: elements.length,
         loop: true,
         defaultAnimation: {
           duration: 3000,
         },
         detailsChanged: (s) => {
-          const opacities = s.track.details.slides.map((slide) => slide.portion)
-          this.setOpacities(opacities)
+          var opacities = s.track.details.slides.map((slide) => slide.portion)
+          elements.forEach((element, idx) => {
+            element.style.opacity = opacities[idx]
+          })
         },
       })
     </script>
