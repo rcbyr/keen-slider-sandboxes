@@ -14,22 +14,22 @@
 
   <body>
     <div id="my-keen-slider" class="fader">
-      <div class="fader__slide">
+      <div class="fader__slide keen-slider__slide">
         <img
           src="https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80"
         />
       </div>
-      <div class="fader__slide">
+      <div class="fader__slide keen-slider__slide">
         <img
           src="https://images.unsplash.com/photo-1590004845575-cc18b13d1d0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80"
         />
       </div>
-      <div class="fader__slide">
+      <div class="fader__slide keen-slider__slide">
         <img
           src="https://images.unsplash.com/photo-1590004987778-bece5c9adab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80"
         />
       </div>
-      <div class="fader__slide">
+      <div class="fader__slide keen-slider__slide">
         <img
           src="https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80"
         />
@@ -37,20 +37,22 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.3.5/keen-slider.min.js"></script>
     <script>
-      var elements = document.querySelectorAll(".fader__slide")
-      var slider = new KeenSlider("#my-keen-slider", {
-        slides: elements.length,
-        loop: true,
-        defaultAnimation: {
-          duration: 3000,
+      var slider = new KeenSlider(
+        "#my-keen-slider",
+        {
+          loop: true,
+          defaultAnimation: {
+            duration: 3000,
+          },
+          detailsChanged: (s) => {
+            var opacities = s.track.details.slides.map((slide) => slide.portion)
+            s.slides.forEach((element, idx) => {
+              element.style.opacity = opacities[idx]
+            })
+          },
         },
-        detailsChanged: (s) => {
-          var opacities = s.track.details.slides.map((slide) => slide.portion)
-          elements.forEach((element, idx) => {
-            element.style.opacity = opacities[idx]
-          })
-        },
-      })
+        { renderer: false }
+      )
     </script>
   </body>
 </html>
