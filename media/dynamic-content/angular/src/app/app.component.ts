@@ -14,7 +14,7 @@ names.length = 500
 export class AppComponent {
   @ViewChild("sliderRef") sliderRef: ElementRef<HTMLElement>
   names: String[] = names
-  indexes: boolean[] = []
+  indexes: number[] = []
   slider: KeenSliderInstance = null
 
   ngAfterViewInit() {
