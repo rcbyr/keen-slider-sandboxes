@@ -19,6 +19,7 @@ export default {
   name: "Slider",
   data() {
     return {
+      names,
       indexes: [],
       slider: null,
     }
