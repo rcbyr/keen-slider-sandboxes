@@ -32,7 +32,7 @@ export default {
         },
         mode: "free-snap",
         detailsChanged: (s) => {
-          indexes = s.track.details.slides.map((slide) => {
+          indexes.value = s.track.details.slides.map((slide) => {
             return slide.abs
           })
         },
