@@ -47,35 +47,13 @@ export default {
 </script>
 
 <style>
-.lazy__slide {
-  height: 50vw;
-  background: rgb(255, 75, 64);
-  background-color: linear-gradient(
-    0deg,
-    rgba(255, 75, 64, 1) 0%,
-    rgba(255, 154, 63, 1) 100%
-  );
-  background-image: url("https://keen-slider.io/images/loader.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100px;
-  min-height: auto;
-}
-
-@media (min-width: 768px) {
-  .lazy__slide {
-    height: 300px;
-  }
-}
-
-.lazy__slide img {
-  background-color: transparent;
+.keen-slider__slide {
+  display: flex;
   width: 100%;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  -webkit-transform: translateY(-50%) translateX(-50%);
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
 }
 </style>
