@@ -28,7 +28,7 @@ export default function App() {
         perView: 3,
       },
     },
-    { mutation: MutationPlugin }
+    [MutationPlugin]
   )
 
   return (
