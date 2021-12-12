@@ -45,9 +45,8 @@
             duration: 3000,
           },
           detailsChanged: (s) => {
-            var opacities = s.track.details.slides.map((slide) => slide.portion)
             s.slides.forEach((element, idx) => {
-              element.style.opacity = opacities[idx]
+              element.style.opacity = s.track.details.slides[idx]
             })
           },
         },
