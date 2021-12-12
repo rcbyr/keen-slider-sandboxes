@@ -12,42 +12,40 @@
 
   <body>
     <div id="my-keen-slider" class="keen-slider">
-      <div class="keen-slider__slide lazy__slide">
-        <img src="" />
+      <div class="keen-slider__slide">
+        <div></div>
       </div>
-      <div class="keen-slider__slide lazy__slide">
-        <img src="" />
-      </div>
-      <div class="keen-slider__slide lazy__slide">
-        <img src="" />
-      </div>
-      <div class="keen-slider__slide lazy__slide">
-        <img src="" />
+      <div class="keen-slider__slide">
+        <div></div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.4.0/keen-slider.min.js"></script>
+    <script src="./names.js"></script>
     <script>
-      var images = [
-        "https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-        "https://images.unsplash.com/photo-1590004845575-cc18b13d1d0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-        "https://images.unsplash.com/photo-1590004987778-bece5c9adab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-        "https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-      ]
-      var loaded = []
-      function loadImages(s) {
-        const slideIdx = s.track.details.rel
-        loaded[slideIdx] = true
-
-        s.slides.forEach((element, idx) => {
-          if (loaded[idx])
-            element.querySelector("img").setAttribute("src", images[idx])
-        })
-      }
+      names.length = 500
       var slider = new KeenSlider("#my-keen-slider", {
-        animationEnded: loadImages,
-        created: loadImages,
-        loop: true,
         initial: 0,
+        loop: {
+          min: 0,
+          max: names.length - 1,
+        },
+        range: {
+          align: true,
+          min: 0,
+          max: names.length - 1,
+        },
+        mode: "free-snap",
+        detailsChanged: (s) => {
+          this.indexes = s.track.details.slides.map((slide) => {
+            s.slides[s.track.absToRel(slide.abs)].querySelector(
+              "div"
+            ).innerHTML = names[slide.abs]
+          })
+        },
+        slides: {
+          number: 2,
+          perView: 1,
+        },
       })
     </script>
   </body>
