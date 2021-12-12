@@ -46,7 +46,7 @@
           },
           detailsChanged: (s) => {
             s.slides.forEach((element, idx) => {
-              element.style.opacity = s.track.details.slides[idx]
+              element.style.opacity = s.track.details.slides[idx].portion
             })
           },
         },
