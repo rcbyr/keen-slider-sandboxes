@@ -1,11 +1,10 @@
 <template>
   <div class="keen-slider" ref="container">
-    <div
-      class="keen-slider__slide lazy__slide"
-      v-for="(src, idx) in images"
-      :key="idx"
-    >
-      <img :src="loaded[idx] ? src : ''" />
+    <div class="keen-slider__slide">
+      <div>{{ names[indexes[0]] }}</div>
+    </div>
+    <div class="keen-slider__slide">
+      <div>{{ names[indexes[1]] }}</div>
     </div>
   </div>
 </template>
@@ -14,25 +13,35 @@
 import { ref } from "vue";
 import { useKeenSlider } from "keen-slider/vue.es";
 import "keen-slider/keen-slider.min.css";
+import names from "./names"
+names.length = 500
 
 export default {
   setup() {
-    const images = [
-      "https://images.unsplash.com/photo-1590004953392-5aba2e72269a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-      "https://images.unsplash.com/photo-1590004845575-cc18b13d1d0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-      "https://images.unsplash.com/photo-1590004987778-bece5c9adab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-      "https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
-    ];
-    const loaded = ref([true]);
+    const indexes = ref([]);
     const [container] = useKeenSlider({
-      animationEnded: (s) => {
-        const idx = s.track.details.rel;
-        loaded.value[idx] = true;
-      },
-      loop: true,
-      initial: 0,
-    });
-    return { container, images, loaded };
+        initial: 0,
+        loop: {
+          min: 0,
+          max: names.length - 1,
+        },
+        range: {
+          align: true,
+          min: 0,
+          max: names.length - 1,
+        },
+        mode: "free-snap",
+        detailsChanged: (s) => {
+          indexes = s.track.details.slides.map((slide) => {
+            return slide.abs
+          })
+        },
+        slides: {
+          number: 2,
+          perView: 1,
+        },
+      });
+    return { container, indexes, names };
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="keen-slider" ref="slider">
-     <div class="keen-slider__slide">
-    <div>{{ names[indexes[0]] }}</div>
+    <div class="keen-slider__slide">
+      <div>{{ names[indexes[0]] }}</div>
     </div>
     <div class="keen-slider__slide">
       <div>{{ names[indexes[1]] }}</div>
