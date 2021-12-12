@@ -49,7 +49,7 @@ function ThumbnailPlugin(main) {
       main.on("animationStarted", (main) => {
         removeActive()
         const next = main.animator.targetIdx || 0
-        addActive(next)
+        addActive(main.track.absToRel(next))
         slider.moveToIdx(next)
       })
     })
