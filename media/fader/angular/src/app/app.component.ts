@@ -29,8 +29,7 @@ export class AppComponent {
           duration: 3000,
         },
         detailsChanged: (s) => {
-          const opacities = s.track.details.slides.map((slide) => slide.portion)
-          this.setOpacities(opacities)
+          this.opacities = s.track.details.slides.map((slide) => slide.portion)
         },
       })
     })
