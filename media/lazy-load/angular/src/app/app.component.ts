@@ -17,13 +17,13 @@ export class AppComponent {
     "https://images.unsplash.com/photo-1590004987778-bece5c9adab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
     "https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
   ]
-  loaded: boolean[] = []
+  loaded: boolean[] = [true]
   slider: KeenSliderInstance = null
 
   ngAfterViewInit() {
     setTimeout(() => {
       this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-        afterChange: (s) => {
+        animationEnded: (s) => {
           const idx = s.track.details.rel
           this.loaded[idx] = true
         },

@@ -33,15 +33,17 @@
         "https://images.unsplash.com/photo-1590004987778-bece5c9adab6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
         "https://images.unsplash.com/photo-1590005176489-db2e714711fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&h=500&w=800&q=80",
       ]
-      var loaded = [true]
+      var loaded = []
+      function loadImages(s) {
+        const slideIdx = s.track.details.rel
+        loaded[slideIdx] = true
+        s.slides.forEach((element, idx) => {
+          if (loaded[idx]) element.setAttribute("src", images[idx])
+        })
+      }
       var slider = new KeenSlider("#my-keen-slider", {
-        animationEnded: (s) => {
-          const slideIdx = s.track.details.rel
-          loaded[slideIdx] = true
-          s.slides.forEach((element, idx) => {
-            if (loaded[idx]) element.setAttribute("src", images[idx])
-          })
-        },
+        animationEnded: loadImages,
+        created: loadImages,
         loop: true,
         initial: 0,
       })
