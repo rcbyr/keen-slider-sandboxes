@@ -25,8 +25,8 @@ export default function App() {
       setSlidesDetails(s.track.details.slides)
     },
     slides: {
-      number: numberSlides,
-      perView: slidesPerView,
+      number: 2,
+      perView: 1,
     },
   })
 
