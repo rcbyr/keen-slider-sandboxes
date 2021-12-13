@@ -57,59 +57,59 @@ export default {
     setValue: { type: Function },
   },
   setup() {
-    function setSlideValues(details) {
-      const offset = this.loop ? 1 / 2 - 1 / this.slidesPerView / 2 : 0
+    // function setSlideValues(details) {
+    //   const offset = this.loop ? 1 / 2 - 1 / this.slidesPerView / 2 : 0
 
-      const values = []
-      for (let i = 0; i < this.length; i++) {
-        const distance =
-          (details.slides[i].distance - offset) * this.slidesPerView
-        const rotate =
-          Math.abs(distance) > this.wheelSize / 2
-            ? 180
-            : distance * (360 / this.wheelSize) * -1
-        const style = {
-          transform: `rotateX(${rotate}deg) translateZ(${this.radius}px)`,
-          WebkitTransform: `rotateX(${rotate}deg) translateZ(${this.radius}px)`,
-        }
-        const value = this.setValue
-          ? this.setValue(i, details.abs + Math.round(distance))
-          : i
-        values.push({ style, value })
-      }
-      this.slideValues = values
-    }
+    //   const values = []
+    //   for (let i = 0; i < this.length; i++) {
+    //     const distance =
+    //       (details.slides[i].distance - offset) * this.slidesPerView
+    //     const rotate =
+    //       Math.abs(distance) > this.wheelSize / 2
+    //         ? 180
+    //         : distance * (360 / this.wheelSize) * -1
+    //     const style = {
+    //       transform: `rotateX(${rotate}deg) translateZ(${this.radius}px)`,
+    //       WebkitTransform: `rotateX(${rotate}deg) translateZ(${this.radius}px)`,
+    //     }
+    //     const value = this.setValue
+    //       ? this.setValue(i, details.abs + Math.round(distance))
+    //       : i
+    //     values.push({ style, value })
+    //   }
+    //   this.slideValues = values
+    // }
     const options = {
-      slides: {
-        number: this.length,
-        origin: this.loop ? "center" : "auto",
-        perView: this.slidesPerView,
-      },
-      vertical: true,
-
-      initial: this.initIdx || 0,
-      loop: this.loop,
-      created: (s) => {
-        this.height = s.size
-        this.radius = this.height / 2
-        this.setSlideValues(s.track.details)
-      },
-      updated: (s) => {
-        this.height = s.size
-      },
-      dragSpeed: (val) => {
-        return (
-          val *
-          (this.height /
-            ((this.height / 2) * Math.tan(this.slideDegree * (Math.PI / 180))) /
-            this.slidesPerView)
-        )
-      },
-      detailsChanged: (s) => {
-        this.setSlideValues(s.track.details)
-      },
-      rubberband: !this.loop,
-      mode: "free-snap",
+      selector: null,
+      //   slides: {
+      //     number: this.length,
+      //     origin: this.loop ? "center" : "auto",
+      //     perView: this.slidesPerView,
+      //   },
+      //   vertical: true,
+      //   initial: this.initIdx || 0,
+      //   loop: this.loop,
+      //   created: (s) => {
+      //     this.height = s.size
+      //     this.radius = this.height / 2
+      //     setSlideValues(s.track.details)
+      //   },
+      //   updated: (s) => {
+      //     this.height = s.size
+      //   },
+      //   dragSpeed: (val) => {
+      //     return (
+      //       val *
+      //       (this.height /
+      //         ((this.height / 2) * Math.tan(this.slideDegree * (Math.PI / 180))) /
+      //         this.slidesPerView)
+      //     )
+      //   },
+      //   detailsChanged: (s) => {
+      //     setSlideValues(s.track.details)
+      //   },
+      //   rubberband: !this.loop,
+      //   mode: "free-snap",
     }
     const [container] = useKeenSlider(options)
     return { container }

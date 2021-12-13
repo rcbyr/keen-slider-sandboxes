@@ -1,0 +1,11 @@
+{
+  "name": "keen-slider-sandbox",
+  "description": "keen-slider sandbox",
+  "version": "0.0.0",
+  "default": "index.html",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  }
+}
