@@ -31,7 +31,7 @@ export class WheelComponent {
     const values = []
     for (let i = 0; i < this.length; i++) {
       const distance =
-        (details.positions[i].distance - offset) * this.slidesPerView
+        (details.slides[i].distance - offset) * this.slidesPerView
       const rotate =
         Math.abs(distance) > this.wheelSize / 2
           ? 180
@@ -41,7 +41,7 @@ export class WheelComponent {
         WebkitTransform: `rotateX(${rotate}deg) translateZ(${this.radius}px)`,
       }
       const value = this.setValue
-        ? this.setValue(i, details.absoluteSlide + Math.round(distance))
+        ? this.setValue(i, details.abs + Math.round(distance))
         : i
       values.push({ style, value })
     }
@@ -71,6 +71,7 @@ export class WheelComponent {
         },
         created: (s) => {
          this.height = s.size
+
         },
         updated: (s) => {
           this.height = s.size
@@ -85,7 +86,6 @@ export class WheelComponent {
       this.slider = new KeenSlider(this.sliderRef.nativeElement, options)
       this.height = this.slider.size
       this.radius = this.height / 2
-      this.setSlideValues(this.slider.track.details)
     })
   }
 
