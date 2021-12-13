@@ -3,8 +3,10 @@
   height: 300px;
 }
 
-.zoom-out .keen-slider__slide.zoom-out__slide {
+.zoom-out__slide div {
   position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .zoom-out__slide img {

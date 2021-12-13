@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from "@angular/core"
-import KeenSlider, { TrackDetails } from "keen-slider"
+import KeenSlider, { KeenSliderInstance, TrackDetails } from "keen-slider"
 
 @Component({
   selector: "app-root",
@@ -38,7 +38,7 @@ export class AppComponent {
         loop: true,
         slides: this.images.length,
         detailsChanged: (s) => {
-          this.details = s.details()
+          this.details = s.track.details
         },
         initial: 2,
       })

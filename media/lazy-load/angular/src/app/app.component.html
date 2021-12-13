@@ -1,8 +1,10 @@
 <div class="keen-slider" #sliderRef>
   <div
-    class="keen-slider__slide lazy__slide"
+    className="keen-slider__slide zoom-out__slide"
     *ngFor="let src of images; let idx = index"
   >
-    <img [src]="loaded[idx] ? src : ''" />
+    <div [ngStyle]="scaleStyle(idx)">
+      <img [src]="[src]" />
+    </div>
   </div>
 </div>
