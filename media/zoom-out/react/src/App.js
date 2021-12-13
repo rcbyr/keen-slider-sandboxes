@@ -12,40 +12,34 @@ const images = [
 
 export default () => {
   const [details, setDetails] = React.useState(null)
-  const [size, setSize] = React.useState(0)
 
   const [sliderRef] = useKeenSlider({
     loop: true,
-    selector: null,
     slides: images.length,
     detailsChanged(s) {
-      setSize(s.size)
       setDetails(s.track.details)
     },
     initial: 2,
   })
 
-  function positionStyle(idx) {
+  function scaleStyle(idx) {
     if (!details) return {}
-    const position = details.slides[idx]
-    const x = size * position.distance
+    const slide = details.slides[idx]
     const scale_size = 0.7
-    const scale = 1 - (scale_size - scale_size * position.portion)
+    const scale = 1 - (scale_size - scale_size * slide.portion)
     return {
-      transform: `translate3d(${x}px, 0px, 0px) scale(${scale})`,
-      WebkitTransform: `translate3d(${x}px, 0px, 0px) scale(${scale})`,
+      transform: `scale(${scale})`,
+      WebkitTransform: `scale(${scale})`,
     }
   }
 
   return (
     <div ref={sliderRef} className="keen-slider zoom-out">
       {images.map((src, idx) => (
-        <div
-          key={idx}
-          style={positionStyle(idx)}
-          className="keen-slider__slide zoom-out__slide"
-        >
-          <img src={src} />
+        <div key={idx} className="keen-slider__slide zoom-out__slide">
+          <div style={scaleStyle(idx)}>
+            <img src={src} />
+          </div>
         </div>
       ))}
     </div>
