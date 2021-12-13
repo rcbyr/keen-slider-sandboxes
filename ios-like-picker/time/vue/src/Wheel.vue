@@ -125,14 +125,13 @@ export default {
         )
       },
       detailsChanged: (s) => {
-        this.setSlideValues(s.details())
+        this.setSlideValues(s.track.details)
       },
       rubberband: !this.loop,
       mode: "free-snap",
     }
     this.slider = new KeenSlider(this.$refs.slider, options)
-    this.radius = this.slider.details().widthOrHeight / 2
-    this.setSlideValues(this.slider.track.details)
+ 
   },
   beforeDestroy() {
     if (this.slider) this.slider.destroy()
