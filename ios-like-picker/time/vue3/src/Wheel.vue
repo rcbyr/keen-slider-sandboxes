@@ -1,6 +1,6 @@
 <template>
   <div
-    ref="slider"
+    ref="container"
     :class="'wheel keen-slider wheel--perspective-' + perspective"
   >
     <div
@@ -43,26 +43,10 @@
 </template>
 
 <script>
+import { useKeenSlider } from "keen-slider/vue.es"
 import "keen-slider/keen-slider.min.css"
-import KeenSlider from "keen-slider"
 
 export default {
-  name: "Wheel",
-  computed: {
-    slidesPerView() {
-      return this.loop ? 9 : 1
-    },
-  },
-  data() {
-    return {
-      height: 0,
-      slideDegree: 360 / 20,
-      slider: null,
-      slideValues: [],
-      radius: 0,
-      wheelSize: 20,
-    }
-  },
   props: {
     initIdx: { type: Number, default: 0 },
     loop: { type: Boolean, default: false },
@@ -72,8 +56,8 @@ export default {
     width: { type: Number, default: 100 },
     setValue: { type: Function },
   },
-  methods: {
-    setSlideValues(details) {
+  setup() {
+    function setSlideValues(details) {
       const offset = this.loop ? 1 / 2 - 1 / this.slidesPerView / 2 : 0
 
       const values = []
@@ -94,10 +78,7 @@ export default {
         values.push({ style, value })
       }
       this.slideValues = values
-    },
-  },
-  updated() {},
-  mounted() {
+    }
     const options = {
       slides: {
         number: this.length,
@@ -130,15 +111,19 @@ export default {
       rubberband: !this.loop,
       mode: "free-snap",
     }
-    this.slider = new KeenSlider(this.$refs.slider, options)
-  },
-  beforeDestroy() {
-    if (this.slider) this.slider.destroy()
+    const [container] = useKeenSlider(options)
+    return { container }
   },
 }
 </script>
 
 <style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .wheel {
   color: #fff;
   display: block;
