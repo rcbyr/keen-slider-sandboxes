@@ -71,6 +71,10 @@ export class WheelComponent {
         },
         created: (s) => {
          this.height = s.size
+         this.radius = this.height / 2
+
+         this.setSlideValues(s.track.details)
+
 
         },
         updated: (s) => {
@@ -84,8 +88,6 @@ export class WheelComponent {
       }
 
       this.slider = new KeenSlider(this.sliderRef.nativeElement, options)
-      this.height = this.slider.size
-      this.radius = this.height / 2
     })
   }
 
