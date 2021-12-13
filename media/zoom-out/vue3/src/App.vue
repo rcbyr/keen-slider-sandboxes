@@ -2,11 +2,10 @@
   <div class="keen-slider zoom-out" ref="container">
     <div
       class="keen-slider__slide zoom-out__slide"
-      
       v-for="(src, idx) in images"
       :key="idx"
     >
-      <div :style="scales[idx]">
+      <div :style="'transform: scale(' + scales[idx] + ')'">
         <img :src="src" />
       </div>
     </div>
@@ -30,13 +29,13 @@ export default {
     const [container] = useKeenSlider({
       loop: true,
       detailsChanged: (s) => {
-        const slides = s.track.details.slides
-        scales.value = (s.slides.map((_element, idx) => {
-          const slide = slides[idx]
-          const scale_size = 0.7
-          const scale = 1 - (scale_size - scale_size * slide.portion)
-          return `scale(${scale})`
-        }))
+        const slides = s.track.details.slides;
+        scales.value = s.slides.map((_element, idx) => {
+          const slide = slides[idx];
+          const scale_size = 0.7;
+          const scale = 1 - (scale_size - scale_size * slide.portion);
+          return scale;
+        });
       },
       initial: 2,
     });
@@ -74,5 +73,4 @@ export default {
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
 }
-
 </style>
