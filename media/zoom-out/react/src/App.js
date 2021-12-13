@@ -15,7 +15,6 @@ export default () => {
 
   const [sliderRef] = useKeenSlider({
     loop: true,
-    slides: images.length,
     detailsChanged(s) {
       setDetails(s.track.details)
     },

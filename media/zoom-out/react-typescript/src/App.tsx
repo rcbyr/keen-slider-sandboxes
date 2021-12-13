@@ -15,7 +15,6 @@ export default function App() {
 
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    slides: images.length,
     detailsChanged(s) {
       setDetails(s.track.details)
     },

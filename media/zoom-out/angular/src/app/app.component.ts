@@ -36,7 +36,6 @@ export class AppComponent {
     setTimeout(() => {
       this.slider = new KeenSlider(this.sliderRef.nativeElement, {
         loop: true,
-        slides: this.images.length,
         detailsChanged: (s) => {
           this.details = s.track.details
         },
