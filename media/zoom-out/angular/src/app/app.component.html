@@ -3,7 +3,7 @@
     class="keen-slider__slide zoom-out__slide"
     *ngFor="let src of images; let idx = index"
   >
-    <div [ngStyle]="positionStyle(idx)">
+    <div [ngStyle]="scaleStyle(idx)">
       <img src="{src}" />
     </div>
   </div>
