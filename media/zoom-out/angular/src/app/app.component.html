@@ -4,7 +4,7 @@
     *ngFor="let src of images; let idx = index"
   >
     <div [ngStyle]="scaleStyle(idx)">
-      <img src="{src}" />
+      <img [src]="src" />
     </div>
   </div>
 </div>
