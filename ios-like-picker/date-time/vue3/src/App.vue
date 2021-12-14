@@ -1,38 +1,54 @@
-
 <template>
-  <div ref="slider" class="keen-slider">
-    <div class="keen-slider__slide number-slide1">1</div>
-    <div class="keen-slider__slide number-slide2">2</div>
-    <div class="keen-slider__slide number-slide3">3</div>
-    <div class="keen-slider__slide number-slide4">4</div>
-    <div class="keen-slider__slide number-slide5">5</div>
-    <div class="keen-slider__slide number-slide6">6</div>
+  <div
+    :style="{
+      height: '200px',
+      padding: '50px',
+      display: 'flex',
+      'justify-content': 'center',
+      background: '#000',
+    }"
+  >
+    <div :style="{ width: '150px' }">
+      <Wheel
+        loop
+        :length="24"
+        :width="140"
+        perspective="right"
+        :setValue="formatDate"
+      />
+    </div>
+    <div :style="{ width: '70px' }">
+      <Wheel loop :length="24" :width="23" />
+    </div>
+    <div :style="{ width: '70px' }">
+      <Wheel loop :length="60" :width="23" perspective="left" />
+    </div>
   </div>
 </template>
 
 <script>
-import "keen-slider/keen-slider.min.css";
-import KeenSlider from "keen-slider";
+import Wheel from "./Wheel"
+import { format, subDays } from "date-fns"
 
 export default {
-  name: "Slider",
-  mounted() {
-    this.slider = new KeenSlider(this.$refs.slider,{
-      mode: "free-snap",
-      slides: {
-        origin: "center",
-        perView: 2,
-        spacing: 15,
-      },
-    });
+  components: {
+    Wheel,
   },
-  beforeDestroy() {
-    if (this.slider) this.slider.destroy();
-  }
-};
+  methods: {
+    formatDate(idx) {
+      return format(subDays(new Date(), idx), "iii d LLL")
+    },
+  },
+}
 </script>
 
 <style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 [class^="number-slide"],
 [class*=" number-slide"] {
   background: grey;
@@ -104,6 +120,3 @@ export default {
   );
 }
 </style>
-
-
-
