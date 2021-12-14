@@ -120,7 +120,7 @@ export default {
       mode: "free-snap",
     }
     const [container] = useKeenSlider(options)
-    return { ...props, container, slideValues, radius, height }
+    return { container, slideValues, radius, height }
   },
 }
 </script>
