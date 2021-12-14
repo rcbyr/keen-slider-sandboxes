@@ -33,7 +33,7 @@ export default function App() {
   return (
     <div className="wrapper">
       <div className="scene">
-        <div className="carousel" ref={sliderRef}>
+        <div className="carousel keen-slider" ref={sliderRef}>
           <div className="carousel__cell number-slide1 ">1</div>
           <div className="carousel__cell number-slide2">2</div>
           <div className="carousel__cell number-slide3">3</div>
