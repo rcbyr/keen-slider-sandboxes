@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import { ref } from "vue"
+
 import { useKeenSlider } from "keen-slider/vue.es"
 import "keen-slider/keen-slider.min.css"
 
@@ -56,63 +58,69 @@ export default {
     width: { type: Number, default: 100 },
     setValue: { type: Function },
   },
-  setup() {
-    // function setSlideValues(details) {
-    //   const offset = this.loop ? 1 / 2 - 1 / this.slidesPerView / 2 : 0
+  setup(props) {
+    const wheelSize = 20
+    const slideDegree = 360 / 20
+    const slidesPerView = props.loop ? 9 : 1
+    const height = ref(0)
+    const slideValues = ref([])
+    const radius = ref(0)
 
-    //   const values = []
-    //   for (let i = 0; i < this.length; i++) {
-    //     const distance =
-    //       (details.slides[i].distance - offset) * this.slidesPerView
-    //     const rotate =
-    //       Math.abs(distance) > this.wheelSize / 2
-    //         ? 180
-    //         : distance * (360 / this.wheelSize) * -1
-    //     const style = {
-    //       transform: `rotateX(${rotate}deg) translateZ(${this.radius}px)`,
-    //       WebkitTransform: `rotateX(${rotate}deg) translateZ(${this.radius}px)`,
-    //     }
-    //     const value = this.setValue
-    //       ? this.setValue(i, details.abs + Math.round(distance))
-    //       : i
-    //     values.push({ style, value })
-    //   }
-    //   this.slideValues = values
-    // }
+    function setSlideValues(details) {
+      const offset = props.loop ? 1 / 2 - 1 / slidesPerView / 2 : 0
+
+      const values = []
+      for (let i = 0; i < props.length; i++) {
+        const distance = (details.slides[i].distance - offset) * slidesPerView
+        const rotate =
+          Math.abs(distance) > wheelSize / 2
+            ? 180
+            : distance * (360 / wheelSize) * -1
+        const style = {
+          transform: `rotateX(${rotate}deg) translateZ(${radius.value}px)`,
+          WebkitTransform: `rotateX(${rotate}deg) translateZ(${radius.value}px)`,
+        }
+        const value = props.setValue
+          ? props.setValue(i, details.abs + Math.round(distance))
+          : i
+        values.push({ style, value })
+      }
+      slideValues.value = values
+    }
+
     const options = {
-      selector: null,
-      //   slides: {
-      //     number: this.length,
-      //     origin: this.loop ? "center" : "auto",
-      //     perView: this.slidesPerView,
-      //   },
-      //   vertical: true,
-      //   initial: this.initIdx || 0,
-      //   loop: this.loop,
-      //   created: (s) => {
-      //     this.height = s.size
-      //     this.radius = this.height / 2
-      //     setSlideValues(s.track.details)
-      //   },
-      //   updated: (s) => {
-      //     this.height = s.size
-      //   },
-      //   dragSpeed: (val) => {
-      //     return (
-      //       val *
-      //       (this.height /
-      //         ((this.height / 2) * Math.tan(this.slideDegree * (Math.PI / 180))) /
-      //         this.slidesPerView)
-      //     )
-      //   },
-      //   detailsChanged: (s) => {
-      //     setSlideValues(s.track.details)
-      //   },
-      //   rubberband: !this.loop,
-      //   mode: "free-snap",
+      slides: {
+        number: props.length,
+        origin: props.loop ? "center" : "auto",
+        perView: slidesPerView,
+      },
+      vertical: true,
+      initial: props.initIdx || 0,
+      loop: props.loop,
+      created: (s) => {
+        height.value = s.size
+        radius.value = height.value / 2
+        setSlideValues(s.track.details)
+      },
+      updated: (s) => {
+        height.value = s.size
+      },
+      dragSpeed: (val) => {
+        return (
+          val *
+          (height.value /
+            ((height.value / 2) * Math.tan(slideDegree * (Math.PI / 180))) /
+            slidesPerView)
+        )
+      },
+      detailsChanged: (s) => {
+        setSlideValues(s.track.details)
+      },
+      rubberband: !props.loop,
+      mode: "free-snap",
     }
     const [container] = useKeenSlider(options)
-    return { container }
+    return { ...props, container, slideValues, radius, height }
   },
 }
 </script>
