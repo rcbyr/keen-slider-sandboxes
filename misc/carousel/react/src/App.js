@@ -40,7 +40,6 @@ export default function App() {
           <div className="carousel__cell number-slide4">4</div>
           <div className="carousel__cell number-slide5">5</div>
           <div className="carousel__cell number-slide6">6</div>
-          <div className="carousel__cell number-slide7">7</div>
         </div>
       </div>
     </div>
