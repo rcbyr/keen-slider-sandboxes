@@ -1,0 +1,22 @@
+<div
+  [ngStyle]="{
+    height: '200px',
+    padding: '50px',
+    display: 'flex',
+    'justify-content': 'center',
+    background: '#000'
+  }"
+>
+  <div [ngStyle]="{ width: '70px' }">
+    <wheel [initIdx]="1" [length]="24" [width]="23" [loop]="true"></wheel>
+  </div>
+  <div [ngStyle]="{ width: '70px' }">
+    <wheel
+      [initIdx]="35"
+      [length]="60"
+      [width]="23"
+      perspective="left"
+      [loop]="true"
+    ></wheel>
+  </div>
+</div>
