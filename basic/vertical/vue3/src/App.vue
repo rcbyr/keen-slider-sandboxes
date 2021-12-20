@@ -1,5 +1,5 @@
 <template>
- <div ref="container" class="keen-slider">
+  <div ref="container" class="keen-slider" style="height: 300px">
     <div class="keen-slider__slide number-slide1">1</div>
     <div class="keen-slider__slide number-slide2">2</div>
     <div class="keen-slider__slide number-slide3">3</div>
@@ -10,12 +10,11 @@
 </template>
 
 <script>
-import { useKeenSlider } from 'keen-slider/vue.es'
-import 'keen-slider/keen-slider.min.css'
-
+import { useKeenSlider } from "keen-slider/vue.es"
+import "keen-slider/keen-slider.min.css"
 
 export default {
-  setup(){
+  setup() {
     const [container] = useKeenSlider({
       loop: true,
       slides: {
@@ -26,14 +25,14 @@ export default {
       vertical: true,
     })
     return { container }
-  }
+  },
 }
 </script>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
