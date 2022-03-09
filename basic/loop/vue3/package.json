@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "keen-slider": "6.6.3",
+    "keen-slider": "6.6.4",
     "vue": "^3.0.0-0"
   },
   "devDependencies": {
