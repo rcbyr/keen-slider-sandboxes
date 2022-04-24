@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
     <div ref="container" class="keen-slider">
       <div class="keen-slider__slide number-slide1">1</div>
       <div class="keen-slider__slide number-slide2">2</div>
@@ -7,7 +7,7 @@
       <div class="keen-slider__slide number-slide4">4</div>
       <div class="keen-slider__slide number-slide5">5</div>
       <div class="keen-slider__slide number-slide6">6</div>
-    </div> 
+    </div>
     <div ref="thumbnail" class="keen-slider thumbnail">
       <div class="keen-slider__slide number-slide1">1</div>
       <div class="keen-slider__slide number-slide2">2</div>
@@ -16,13 +16,12 @@
       <div class="keen-slider__slide number-slide5">5</div>
       <div class="keen-slider__slide number-slide6">6</div>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
-import { useKeenSlider } from 'keen-slider/vue.es'
-import 'keen-slider/keen-slider.min.css'
-
+import { useKeenSlider } from "keen-slider/vue.es"
+import "keen-slider/keen-slider.min.css"
 
 function ThumbnailPlugin(main) {
   return (slider) => {
@@ -49,7 +48,7 @@ function ThumbnailPlugin(main) {
       main.value.on("animationStarted", () => {
         removeActive()
         const next = main.value.animator.targetIdx || 0
-        addActive(main.track.absToRel(next))
+        addActive(main.value.track.absToRel(next))
         slider.moveToIdx(next)
       })
     })
@@ -57,7 +56,7 @@ function ThumbnailPlugin(main) {
 }
 
 export default {
-  setup(){
+  setup() {
     const [container, slider] = useKeenSlider()
     const [thumbnail] = useKeenSlider(
       {
@@ -67,16 +66,17 @@ export default {
           spacing: 10,
         },
       },
-      [ThumbnailPlugin(slider)])
+      [ThumbnailPlugin(slider)]
+    )
     return { container, thumbnail }
-  }
+  },
 }
 </script>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -164,5 +164,4 @@ body {
 .thumbnail .keen-slider__slide.active {
   border: 2px dashed black;
 }
-
 </style>
