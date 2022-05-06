@@ -22,7 +22,7 @@
     "@angular/router": "^12.2.0",
     "core-js": "3.8.3",
     "date-fns": "^2.12.0",
-    "keen-slider": "6.6.10",
+    "keen-slider": "6.6.13",
     "rxjs": "6.6.3",
     "tslib": "2.1.0",
     "zone.js": "0.11.3"
