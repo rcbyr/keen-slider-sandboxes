@@ -12,7 +12,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "date-fns": "^2.12.0",
-    "keen-slider": "6.8.1",
+    "keen-slider": "6.8.2",
     "vue": "^3.0.0-0"
   },
   "devDependencies": {
