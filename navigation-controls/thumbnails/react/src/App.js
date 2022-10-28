@@ -30,7 +30,7 @@ function ThumbnailPlugin(mainRef) {
         removeActive()
         const next = main.animator.targetIdx || 0
         addActive(main.track.absToRel(next))
-        slider.moveToIdx(next)
+        slider.moveToIdx(Math.min(slider.track.details.maxIdx, next))
       })
     })
   }

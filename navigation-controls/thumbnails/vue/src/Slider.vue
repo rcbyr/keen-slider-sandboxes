@@ -8,7 +8,7 @@
       <div class="keen-slider__slide number-slide4">4</div>
       <div class="keen-slider__slide number-slide5">5</div>
       <div class="keen-slider__slide number-slide6">6</div>
-    </div>  
+    </div>
     <div ref="thumbnail" class="keen-slider thumbnail">
       <div class="keen-slider__slide number-slide1">1</div>
       <div class="keen-slider__slide number-slide2">2</div>
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import "keen-slider/keen-slider.min.css";
-import KeenSlider from "keen-slider";
+import "keen-slider/keen-slider.min.css"
+import KeenSlider from "keen-slider"
 
 function ThumbnailPlugin(main) {
   return (slider) => {
@@ -50,7 +50,7 @@ function ThumbnailPlugin(main) {
         removeActive()
         const next = main.animator.targetIdx || 0
         addActive(main.track.absToRel(next))
-        slider.moveToIdx(next)
+        slider.moveToIdx(Math.min(slider.track.details.maxIdx, next))
       })
     })
   }
@@ -59,8 +59,9 @@ function ThumbnailPlugin(main) {
 export default {
   name: "Slider",
   mounted() {
-    this.slider = new KeenSlider(this.$refs.slider);
-    this.thumbnail = new KeenSlider(this.$refs.thumbnail,
+    this.slider = new KeenSlider(this.$refs.slider)
+    this.thumbnail = new KeenSlider(
+      this.$refs.thumbnail,
       {
         initial: 0,
         slides: {
@@ -68,18 +69,17 @@ export default {
           spacing: 10,
         },
       },
-      [ThumbnailPlugin(this.slider)]);
+      [ThumbnailPlugin(this.slider)]
+    )
   },
   beforeDestroy() {
-    if (this.slider) this.slider.destroy();
-    if (this.thumbnail) this.thumbnail.destroy();
-  }
-};
+    if (this.slider) this.slider.destroy()
+    if (this.thumbnail) this.thumbnail.destroy()
+  },
+}
 </script>
 
 <style>
-
-
 [class^="number-slide"],
 [class*=" number-slide"] {
   background: grey;
@@ -163,7 +163,6 @@ export default {
 .thumbnail .keen-slider__slide.active {
   border: 2px dashed black;
 }
-
 </style>
 
 
