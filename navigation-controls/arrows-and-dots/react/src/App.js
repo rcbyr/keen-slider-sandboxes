@@ -71,13 +71,13 @@ export default () => {
 }
 
 function Arrow(props) {
-  const disabeld = props.disabled ? " arrow--disabled" : ""
+  const disabled = props.disabled ? " arrow--disabled" : ""
   return (
     <svg
       onClick={props.onClick}
       className={`arrow ${
         props.left ? "arrow--left" : "arrow--right"
-      } ${disabeld}`}
+      } ${disabled}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
